@@ -1,6 +1,6 @@
 <div align="center">
 
-# Desvolar Frontend
+# Desvolar Web
 
 Frontend for desvolar.com application
 
