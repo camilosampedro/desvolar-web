@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import logo from './airplane.svg';
 import './App.css';
 
 class App extends Component {
@@ -8,11 +8,21 @@ class App extends Component {
       <div className="App">
         <div className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
+          <h2>Desvolar</h2>
+          <div className="searchContent">
+            <div className="searchField">
+              <label>Origen</label>
+              <input type="text"></input>
+            </div>
+            <div className="searchField">
+              <label>Destino</label>
+              <input type="text"></input>
+            </div>
+            <div className="searchButton">
+              <button>Buscar</button>
+            </div>
+          </div>
         </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
       </div>
     );
   }
