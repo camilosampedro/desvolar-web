@@ -1,24 +1,90 @@
+body{
+  background-image: url(./airplane.jpg);
+  background-repeat: no-repeat;
+  background-size: 100%;
+}
 .App {
   text-align: center;
 }
 
 .App-logo {
-  animation: App-logo-spin infinite 20s linear;
+  animation: App-logo-spin infinite 10s linear;
   height: 80px;
 }
 
 .App-header {
-  background-color: #222;
   height: 150px;
   padding: 20px;
-  color: white;
 }
 
 .App-intro {
   font-size: large;
 }
+.searchContent {
+  position: relative;
+  width: 40vw;
+  margin-left: 30%;
+  margin-right: 30%;
+  padding-top: 1%;
+  padding-bottom: 1%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(245,245,220,0.5);
+  -webkit-box-shadow: 6px 4px 5px 0px rgba(50, 50, 50, 0.36);
+  -moz-box-shadow:    6px 4px 5px 0px rgba(50, 50, 50, 0.36);
+  box-shadow:         6px 4px 5px 0px rgba(50, 50, 50, 0.36);
+  border-radius: 5px;
+  text-align: left;
+  flex-wrap: wrap;
+}
+.searchContent div, .searchContent button{
+  margin-top: 1vh;
+  margin-bottom: 1vh;
+}
+.searchContent .searchField {
+  position: relative;
+  width: 30vw;
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  margin-left: 1%;
+}
+.searchContent .searchField input{
+  border-radius: 5px;
+  border: none;
+  text-align: center;
+  height: 1.5rem;
+}
+.searchContent .searchButton{
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40vw;
+
+}
+ button {
+  position: relative;
+  top: 5%;
+  text-align: center;
+  background-color: darkslategray;
+  border: none;
+  width: 25%;
+  border-radius: 5px;
+  height: 6vh;
+  color: white;
+  cursor: pointer;
+}
+.searchContent button:hover {
+  background-color: darkcyan;
+}
 
 @keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+  0% { transform: rotate(0deg); }
+  25% { transform: rotate(20deg); }
+  50% { transform: rotate(0deg); }
+  75% { transform: rotate(-20deg); }
+  100% { transform: rotate(0deg); }
 }
