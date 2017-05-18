@@ -28,10 +28,12 @@ body{
   padding-top: 1%;
   padding-bottom: 1%;
   display: flex;
-  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  background-color: rgba(245,245,220,0.5);
+  justify-content: space-around;
+  align-items: center;
+  /*background-color: rgba(245,245,220,1);*/
+  background-color: rgba(117,84,97,0.9);
+  /*background-color: #755461;*/
   -webkit-box-shadow: 6px 4px 5px 0px rgba(50, 50, 50, 0.36);
   -moz-box-shadow:    6px 4px 5px 0px rgba(50, 50, 50, 0.36);
   box-shadow:         6px 4px 5px 0px rgba(50, 50, 50, 0.36);
@@ -45,40 +47,47 @@ body{
 }
 .searchContent .searchField {
   position: relative;
-  width: 30vw;
+  width: 50%;
   display: flex;
-  justify-content: flex-start;
+  align-items: center;
   flex-direction: column;
-  margin-left: 1%;
 }
 .searchContent .searchField input{
   border-radius: 5px;
-  border: none;
+  /*border: 1px solid #755461;*/
   text-align: center;
   height: 1.5rem;
+}
+label {
+  /*color: #755461;*/
+  color: #fff;
+  font-weight: 500;
 }
 .searchContent .searchButton{
   position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 40vw;
+  width: 100%;
 
 }
  button {
   position: relative;
   top: 5%;
   text-align: center;
-  background-color: darkslategray;
+  background-color: #5C8A70;
+  color: #fff;
+  font-weight: bold;
   border: none;
-  width: 25%;
+  width: 20%;
   border-radius: 5px;
-  height: 6vh;
-  color: white;
+  height: 2rem;
   cursor: pointer;
+  outline: none;
 }
 .searchContent button:hover {
-  background-color: darkcyan;
+  background-color: #80C89F;
+  /*color: #755461;*/
 }
 
 @keyframes App-logo-spin {
