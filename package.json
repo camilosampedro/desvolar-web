@@ -9,7 +9,8 @@
   },
   "devDependencies": {
     "moxios": "^0.4.0",
-    "react-scripts": "0.9.5"
+    "react-scripts": "0.9.5",
+    "sinon": "2.2.0"
   },
   "scripts": {
     "start": "react-scripts start",
