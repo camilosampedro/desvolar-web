@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Table } from 'semantic-ui-react'
 import logo from './airplane.svg';
 import './App.css';
 
@@ -24,7 +25,7 @@ class App extends Component {
       //     </div>
       //   </div>
       // </div>
-      <div className="Result">
+      /*<div className="Result">
         <div className="Result-header">
           <h1>Medellín Hacia Bogotá</h1>
           <label>Jueves, 11 Mayo, 2017</label>
@@ -51,7 +52,34 @@ class App extends Component {
             </div>
           </div>
         </div>
-      </div>
+      </div>*/
+       <Table celled>  
+          <Table.Header>
+            <Table.Row>
+              <Table.HeaderCell>Vuelos1</Table.HeaderCell>
+              <Table.HeaderCell>Vuelos2</Table.HeaderCell>
+              <Table.HeaderCell>Vuelos3</Table.HeaderCell>              
+            </Table.Row>
+            </Table.Header>
+
+            <Table.Body>
+        <Table.Row>
+          <Table.Cell>Cell</Table.Cell>
+          <Table.Cell>Cell</Table.Cell>
+          <Table.Cell>Cell</Table.Cell>
+        </Table.Row>
+        <Table.Row>
+          <Table.Cell>Cell</Table.Cell>
+          <Table.Cell>Cell</Table.Cell>
+          <Table.Cell>Cell</Table.Cell>
+        </Table.Row>
+        <Table.Row>
+          <Table.Cell>Cell</Table.Cell>
+          <Table.Cell>Cell</Table.Cell>
+          <Table.Cell>Cell</Table.Cell>
+        </Table.Row>
+      </Table.Body>
+  </Table>
     );
   }
 }
