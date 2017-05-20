@@ -3,42 +3,26 @@ import { Table, Icon, Checkbox } from 'semantic-ui-react'
 import logo from './airplane.svg';
 import './App.css';
 import 'semantic-ui-css/semantic.min.css';
-
+import sortResult from './service/sort-results';
 
 class FlightResults extends Component {
-constructor(){
-  super();
+constructor(props){
+  super(props);
   this.state = {
-    results : [{
-        flightcode: "001",
-        origin: "MDE",
-        destination: "BOG",
-        price: 200000,
-        currency: "COP",
-        date: "05:24 21-03-2017",
-        code: "231",
-        name: "Satena",
-        thumbail: "url"
-      },
-      {
-        flightcode: "002",
-        origin: "BOG",
-        destination: "MDE",
-        price: 203400,
-        currency: "COP",
-        date: "23:03 25-03-2017",
-        code: "231",
-        name: "Satena",
-        thumbail: "url"
-      }]
+    results : []
   }
+  this.props.resutsObservable.then(result=>
+    this.setState({
+      results: sortResult(this.state.results, result)
+    })
+  )
 }
 
   render() {
     return (
      <div className="content">
        <h3 className="title">Vuelos</h3>
-          <Table celled textAlign='center'>  
+          <Table celled textAlign='center' color={'purple'} key={'purple'}>
               <Table.Header className="header">
                 <Table.Row>
                   <Table.HeaderCell className="results">
@@ -50,8 +34,8 @@ constructor(){
                   </Table.HeaderCell>
                   <Table.HeaderCell className="results">Destino</Table.HeaderCell>
                   <Table.HeaderCell className="results">Fecha</Table.HeaderCell>
-                  <Table.HeaderCell className="results">Aerolinea</Table.HeaderCell>            
-                  <Table.HeaderCell className="results">Tarifa</Table.HeaderCell>            
+                  <Table.HeaderCell className="results">Aerolinea</Table.HeaderCell>
+                  <Table.HeaderCell className="results">Tarifa</Table.HeaderCell>
                   {/*<Table.HeaderCell className="results">Tarifa</Table.HeaderCell>            */}
                 </Table.Row>
                 </Table.Header>
@@ -85,7 +69,7 @@ constructor(){
                         </div>
                         <div className="info">
                         <span>{this.state.airlane.name} ({this.state.results[0].flightcode})</span>
-                        </div>*/}  
+                        </div>*/}
                     {/*<Table.Cell className="infoPrice">
                         <span>{this.state.results[0].currency}$ {this.state.results[0].price}</span>
                         </Table.Cell>   */}

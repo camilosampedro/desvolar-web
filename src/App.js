@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import Main from './main/Main'
+import FlightResults from './FlightResults'
 import {submitAllSearchs} from './service/search-service';
 
 const MAIN_PHASE = 0;
@@ -23,7 +24,7 @@ class App extends Component {
       // TODO: Change this div for "Result"
       // <FlightResults resutsObservable={this.state.observable}></FlightResults>
       return (
-        <div></div>
+        <FlightResults resutsObservable={this.state.observable}></FlightResults>
       );
     }
   }
