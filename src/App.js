@@ -15,7 +15,7 @@ class App extends Component {
   }
 
   render() {
-    if (this.state.phase == MAIN_PHASE) {
+    if (this.state.phase === MAIN_PHASE) {
       return (
         <Main onChange={this.search.bind(this)}></Main>
       );
