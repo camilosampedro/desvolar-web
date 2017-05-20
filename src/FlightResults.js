@@ -9,34 +9,46 @@ class FlightResults extends Component {
 constructor(props){
   super(props);
   this.state = {
-    results : []
+    results : [{
+    code: 2,
+    name: "Chan",
+    thumbnail: "anUrl",
+    flightcode: "123",
+    origin: "MDE",
+    destination: "BOG",
+    price: 14000,
+    currency: "COP",
+    date: "12:30 12-05-2017"
+}]
   }
-  this.props.resutsObservable.then(result=>
-    this.setState({
-      results: sortResult(this.state.results, result)
-    })
-  )
+  // this.props.resutsObservable.then(result=>
+  //   this.setState({
+  //     results: sortResult(this.state.results, result)
+  //   })
+  // )
 }
 
   render() {
     return (
      <div className="content">
-       <h3 className="title">Vuelos</h3>
-          <Table celled textAlign='center' color={'purple'} key={'purple'}>
+       <img src={logo} className="App-logo" alt="logo" />
+          <h2>Desvolar.com</h2>
+          <h3 className="title">Resultados obtenidos</h3>
+          <Table celled textAlign='center' size="medium" className="table">
               <Table.Header className="header">
                 <Table.Row>
-                  <Table.HeaderCell className="results">
+                  <Table.HeaderCell >
                     <Icon name='plane' size='large'/>
                   </Table.HeaderCell>
-                  <Table.HeaderCell className="results">Origen</Table.HeaderCell>
-                  <Table.HeaderCell className="results">
+                  <Table.HeaderCell >Origen</Table.HeaderCell>
+                  <Table.HeaderCell >
                     <Icon name='arrow right'/>
                   </Table.HeaderCell>
-                  <Table.HeaderCell className="results">Destino</Table.HeaderCell>
-                  <Table.HeaderCell className="results">Fecha</Table.HeaderCell>
-                  <Table.HeaderCell className="results">Aerolinea</Table.HeaderCell>
-                  <Table.HeaderCell className="results">Tarifa</Table.HeaderCell>
-                  {/*<Table.HeaderCell className="results">Tarifa</Table.HeaderCell>            */}
+                  <Table.HeaderCell >Destino</Table.HeaderCell>
+                  <Table.HeaderCell >Fecha</Table.HeaderCell>
+                  <Table.HeaderCell >Aerolinea</Table.HeaderCell>
+                  <Table.HeaderCell >Tarifa</Table.HeaderCell>
+                  {/*<Table.HeaderCell >Tarifa</Table.HeaderCell>            */}
                 </Table.Row>
                 </Table.Header>
 
@@ -55,24 +67,7 @@ constructor(props){
                         <Table.Cell >COP {result.price}
                          </Table.Cell>
                     </Table.Row>))}
-                        {/*<Checkbox />
-                        <div className="horario">
-                        <span>{this.state.results[0].date}</span>
-                        {/*<span>06:56</span>
-                        </div>
-                        <div className="ciudades">
-                        <span>
-                            Medellin {this.state.results[0].origin}
-                        <br></br>
-                        Bogota {this.state.results[0].destination}
-                        </span>
-                        </div>
-                        <div className="info">
-                        <span>{this.state.airlane.name} ({this.state.results[0].flightcode})</span>
-                        </div>*/}
-                    {/*<Table.Cell className="infoPrice">
-                        <span>{this.state.results[0].currency}$ {this.state.results[0].price}</span>
-                        </Table.Cell>   */}
+                      
           </Table.Body>
 
       </Table>

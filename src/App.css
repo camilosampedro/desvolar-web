@@ -117,6 +117,29 @@ button {
 
 
 /*Informacion de vuelos*/
-.tableInfo {
-  border: 1px solid darkgrey;
+.content {
+-webkit-box-align: center;
+-ms-flex-align: center;
+align-items: center;
+display: flex;
+flex-direction: column;
+}
+
+.content img {
+  margin: 20px;
+}
+
+.content h3 {
+        /* margin-top: 26px; */
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 10px 20px;
+    border-radius: 5px;
+    box-shadow: 3px 3px 20px 0px black;
+    width: 85%;
+    text-align: center;
+}
+
+
+.ui.table {
+  width: 85% !important;
 }

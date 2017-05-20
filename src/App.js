@@ -10,7 +10,8 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      phase: MAIN_PHASE,
+      phase: RESULT_PHASE,
+      // phase: MAIN_PHASE,
       observable: {}
     }
   }
