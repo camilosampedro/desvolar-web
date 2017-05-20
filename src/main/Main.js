@@ -22,7 +22,7 @@ class Main extends Component {
     });
   }
 
-  submit(){
+  submitStatus(){
     let filters = {};
     this.props.onChange(filters);
   }
@@ -35,11 +35,11 @@ class Main extends Component {
         <div className="searchContent">
           <div className="searchField">
             <label>Origen</label>
-            <Input placeholder="Ciudad origen..."></Input>
+            <Input placeholder="Ciudad origen..." onChange={this.changeOrigin.bind(this)}></Input>
           </div>
           <div className="searchField">
             <label>Destino</label>
-            <Input placeholder="Ciudad destino..."></Input>
+            <Input placeholder="Ciudad destino..." onChange={this.changeDesination.bind(this)}></Input>
           </div>
           <div className="searchField">
             <label>Fecha Ida</label>
@@ -51,10 +51,10 @@ class Main extends Component {
           </div>
           <div className="searchField">
             <label>Número de pasajeros</label>
-            <input type="number" max="20" min="1"></input>
+            <input type="number" max="20" min="1" onChange={this.changePassengers.bind(this)}></input>
           </div>
           <div className="searchButton">
-            <Button onClick={this.submit.bind(this)}>Buscar</Button>
+            <Button onClick={this.submitStatus.bind(this)}>Buscar</Button>
           </div>
         </div>
       </div>
