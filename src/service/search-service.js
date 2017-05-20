@@ -4,7 +4,7 @@ import axios from 'axios';
 
 export function submitSearch(filters, apiUrl) {
   let _this = this;
-  return axios.post(apiUrl, filters).then(rawResponse => rawResponse.json()).catch(error => console.log(error))
+  return axios.post(apiUrl, filters).catch(error => console.log(error))
 }
 
 export function submitAllSearchs(filters) {
@@ -12,6 +12,6 @@ export function submitAllSearchs(filters) {
   let chanResult = submitSearch(filters, CHAN_URL);
   let topaResult = submitSearch(filters, TOPA_URL);
   let ibaResult = submitSearch(filters, IBA_COLOMBIA_URL);
-  let mergedResults = Rx.Observable.merge(viancaResult, chanResult, topaResult, ibaResult);
+  let mergedResults = axios.all([viancaResult, chanResult, topaResult, ibaResult]);
   return mergedResults;
 }

@@ -4,6 +4,7 @@ import logo from './airplane.svg';
 import './App.css';
 import 'semantic-ui-css/semantic.min.css';
 import sortResult from './service/sort-results';
+import axios from 'axios';
 
 class FlightResults extends Component {
 constructor(props){
@@ -11,11 +12,32 @@ constructor(props){
   this.state = {
     results : []
   }
-  this.props.resutsObservable.subscribe(result=>
+  this.props.resultsObservable.then(axios.spread((viancaResult, chanResult, topaResult, ibaResult) => {
+
+    if(viancaResult &&
+     viancaResult.status === 200){
     this.setState({
-      results: sortResult(this.state.results, result)
-    })
-  )
+      results: sortResult(this.state.results, viancaResult.data)
+    });
+  }
+  if(chanResult && chanResult.status === 200){
+    this.setState({
+      results: sortResult(this.state.results, chanResult.data)
+    });
+  }
+  if(topaResult && topaResult.status === 200){
+    this.setState({
+      results: sortResult(this.state.results, topaResult.data)
+    });
+  }
+    if(ibaResult && ibaResult.status === 200){
+      this.setState({
+        results: sortResult(this.state.results, ibaResult.data)
+      });
+    }
+  }))
+
+
 }
 
   render() {

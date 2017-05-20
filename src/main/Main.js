@@ -80,7 +80,6 @@ class Main extends Component {
       filters.arrivalDate = this.state.arrivalDate.format('DD-MM-YYYY');
       filters.roundTrip = this.state.roundTrip;
     } else {
-      filters.arrivalDate = '';
       filters.roundTrip = false;
     }
     this.props.onChange(filters);
