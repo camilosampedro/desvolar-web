@@ -5,6 +5,6 @@ import './index.css';
 import FlightResults from './FlightResults';
 
 ReactDOM.render(
-  <FlightResults />,
+  <App />,
   document.getElementById('root')
 );

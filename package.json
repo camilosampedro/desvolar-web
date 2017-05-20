@@ -3,12 +3,19 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "axios": "^0.16.1",
+    "moment": "^2.18.1",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
-    "semantic-ui-css": "^2.2.10"
+    "semantic-ui-css": "^2.2.10",
+    "react-datepicker": "^0.46.0",
+    "semantic-ui-react": "^0.68.3",
+    "rxjs": "^5.4.0"
   },
   "devDependencies": {
-    "react-scripts": "0.9.5"
+    "moxios": "^0.4.0",
+    "react-scripts": "0.9.5",
+    "sinon": "2.2.0"
   },
   "scripts": {
     "start": "react-scripts start",
