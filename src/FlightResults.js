@@ -11,7 +11,7 @@ constructor(props){
   this.state = {
     results : []
   }
-  this.props.resutsObservable.then(result=>
+  this.props.resutsObservable.subscribe(result=>
     this.setState({
       results: sortResult(this.state.results, result)
     })

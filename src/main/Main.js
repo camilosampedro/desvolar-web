@@ -18,7 +18,7 @@ class Main extends Component {
       arrivalDate: '',
       origin: '',
       destination: '',
-      passengers: '1',
+      passengers: 1,
       roundTrip: true,
     }
     this.changeDepartureDate = this.changeDepartureDate.bind(this);
@@ -39,9 +39,10 @@ class Main extends Component {
     });
   }
   changeDepartureDate(date){
+    //let localDate = moment(date, "MM/DD/YYYY hh:mm:ss A");
     if(date.isValid()){
       this.setState({
-        departureDate: date
+        departureDate: date //localDate.format('DD-MM-YYYY')
       });
     }
   }
@@ -56,7 +57,7 @@ class Main extends Component {
     let aux = parseInt(event.target.value);
     if(Number.isInteger(aux) && aux>0 && aux < 1000){
       this.setState({
-        passengers: aux
+        passengers: +aux
       });
     }
   }
@@ -68,7 +69,20 @@ class Main extends Component {
   }
 
   submitStatus(){
-    let filters = {};
+    let filters = {
+      departureDate: this.state.departureDate.format('DD-MM-YYYY'),
+      origin: this.state.origin,
+      destination: this.state.destination,
+      passengers: this.state.passengers,
+
+    }
+    if(this.state.arrivalDate != ''){
+      filters.arrivalDate = this.state.arrivalDate.format('DD-MM-YYYY');
+      filters.roundTrip = this.state.roundTrip;
+    } else {
+      filters.arrivalDate = '';
+      filters.roundTrip = false;
+    }
     this.props.onChange(filters);
   }
 
@@ -110,7 +124,7 @@ class Main extends Component {
             <input className="passengers" value={this.state.passengers} onChange={this.changePassengers}></input>
           </div>
           <div className="searchButton">
-            <button onClick={this.submit.bind(this)}>Buscar</button>
+            <button onClick={this.submitStatus.bind(this)}>Buscar</button>
           </div>
         </div>
       </div>

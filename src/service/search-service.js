@@ -1,5 +1,5 @@
 import {VIANCA_URL, CHAN_URL, TOPA_URL, IBA_COLOMBIA_URL} from './service-store';
-import {Rx} from 'rxjs';
+import Rx from 'rxjs';
 import axios from 'axios';
 
 export function submitSearch(filters, apiUrl) {
@@ -8,10 +8,10 @@ export function submitSearch(filters, apiUrl) {
 }
 
 export function submitAllSearchs(filters) {
-  let viancaResult = this.submitSearch(filters, VIANCA_URL);
-  let chanResult = this.submitSearch(filters, CHAN_URL);
-  let topaResult = this.submitSearch(filters, TOPA_URL);
-  let ibaResult = this.submitSearch(filters, IBA_COLOMBIA_URL);
+  let viancaResult = submitSearch(filters, VIANCA_URL);
+  let chanResult = submitSearch(filters, CHAN_URL);
+  let topaResult = submitSearch(filters, TOPA_URL);
+  let ibaResult = submitSearch(filters, IBA_COLOMBIA_URL);
   let mergedResults = Rx.Observable.merge(viancaResult, chanResult, topaResult, ibaResult);
   return mergedResults;
 }
