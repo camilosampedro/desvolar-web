@@ -21,6 +21,7 @@ class App extends Component {
       );
     } else {
       // TODO: Change this div for "Result"
+      // <FlightResults resutsObservable={this.state.observable}></FlightResults>
       return (
         <div></div>
       );

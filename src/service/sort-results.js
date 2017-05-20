@@ -1,4 +1,4 @@
-export default function sortResult(oldResults, newResult){
+function sortResult(oldResults, newResult){
   let airline = newResult.airline;
   let newResultTransformed = [];
   for(let result of newResult.results) {
@@ -12,3 +12,5 @@ export default function sortResult(oldResults, newResult){
     return a.price < b.price ? -1: a.price > b.price ? 1: 0;
   });
 }
+
+export default sortResult;

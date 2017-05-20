@@ -1,6 +1,6 @@
 import {VIANCA_URL, CHAN_URL, TOPA_URL, IBA_COLOMBIA_URL} from './service-store';
 import {Rx} from 'rxjs';
-var axios = require('axios');
+import axios from 'axios';
 
 export function submitSearch(filters, apiUrl) {
   let _this = this;

@@ -28,7 +28,7 @@ describe('mocking service requests', function() {
               "name": "Chan",
               "thumbnail": ""
             },
-            "result": [
+            "results": [
               {
                 "flightcode": "123",
                 "origin": "MDE",
