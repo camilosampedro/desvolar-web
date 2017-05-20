@@ -1,0 +1,99 @@
+body{
+  background-image: url(../airplane.jpg);
+  background-repeat: no-repeat;
+  background-size: 100%;
+}
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  animation: App-logo-spin infinite 10s linear;
+  height: 80px;
+}
+
+.App-header {
+  height: 150px;
+  padding: 20px;
+}
+
+.App-intro {
+  font-size: large;
+}
+.searchContent {
+  position: relative;
+  width: 40vw;
+  margin-left: 30%;
+  margin-right: 30%;
+  padding-top: 1%;
+  padding-bottom: 1%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  align-items: center;
+  /*background-color: rgba(245,245,220,1);*/
+  background-color: rgba(117,84,97,0.9);
+  /*background-color: #755461;*/
+  -webkit-box-shadow: 6px 4px 5px 0px rgba(50, 50, 50, 0.36);
+  -moz-box-shadow:    6px 4px 5px 0px rgba(50, 50, 50, 0.36);
+  box-shadow:         6px 4px 5px 0px rgba(50, 50, 50, 0.36);
+  border-radius: 5px;
+  text-align: left;
+  flex-wrap: wrap;
+}
+.searchContent div, .searchContent button{
+  margin-top: 1vh;
+  margin-bottom: 1vh;
+}
+.searchContent .searchField {
+  position: relative;
+  width: 50%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+.searchContent .searchField input{
+  border-radius: 5px;
+  /*border: 1px solid #755461;*/
+  text-align: center;
+  height: 1.5rem;
+}
+label {
+  /*color: #755461;*/
+  color: #fff;
+  font-weight: 500;
+}
+.searchContent .searchButton{
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+
+}
+ button {
+  position: relative;
+  top: 5%;
+  text-align: center;
+  background-color: #5C8A70;
+  color: #fff;
+  font-weight: bold;
+  border: none;
+  width: 20%;
+  border-radius: 5px;
+  height: 2rem;
+  cursor: pointer;
+  outline: none;
+}
+.searchContent button:hover {
+  background-color: #80C89F;
+  /*color: #755461;*/
+}
+
+@keyframes App-logo-spin {
+  0% { transform: rotate(0deg); }
+  25% { transform: rotate(20deg); }
+  50% { transform: rotate(0deg); }
+  75% { transform: rotate(-20deg); }
+  100% { transform: rotate(0deg); }
+}
