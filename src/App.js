@@ -1,31 +1,41 @@
-import React, { Component } from 'react';
-import logo from './airplane.svg';
-import './App.css';
+import React, {Component} from 'react';
+import Main from './main/Main'
+import FlightResults from './FlightResults'
+import {submitAllSearchs} from './service/search-service';
+
+const MAIN_PHASE = 0;
+const RESULT_PHASE = 1;
 
 class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Desvolar</h2>
-          <div className="searchContent">
-            <div className="searchField">
-              <label>Origen</label>
-              <input type="text"></input>
-            </div>
-            <div className="searchField">
-              <label>Destino</label>
-              <input type="text"></input>
-            </div>
-            <div className="searchButton">
-              <button>Buscar</button>
-            </div>
-          </div>
-        </div>
-      </div>
-    );
+  constructor(props) {
+    super(props);
+    this.state = {
+      phase: MAIN_PHASE,
+      // phase: MAIN_PHASE,
+      observable: {}
+    }
   }
+
+  render() {
+    if (this.state.phase === MAIN_PHASE) {
+      return (
+        <Main onChange={this.search.bind(this)}></Main>
+      );
+    } else {
+      // TODO: Change this div for "Result"
+      // <FlightResults resutsObservable={this.state.observable}></FlightResults>
+      console.log('state', this.state);
+      return (
+        <FlightResults resultsObservable={this.state.observable}></FlightResults>
+      );
+    }
+  }
+
+  search(filters) {
+    console.log('filters', filters);
+    this.setState({phase: RESULT_PHASE, observable: submitAllSearchs(filters)});
+  }
+
 }
 
 export default App;
