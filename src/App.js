@@ -5,7 +5,7 @@ import {Button, Input} from 'semantic-ui-react'
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import moment from 'moment';
-
+import {submitAllSearchs} from './service/search-service';
 
 class App extends Component {
   constructor(props){
@@ -56,6 +56,10 @@ class App extends Component {
         </div>
       </div>
     );
+  }
+
+  search(filters) {
+    submitAllSearchs(filters);
   }
 }
 
