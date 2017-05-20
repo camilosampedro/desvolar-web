@@ -4,28 +4,39 @@ import logo from './airplane.svg';
 import './App.css';
 import 'semantic-ui-css/semantic.min.css';
 import sortResult from './service/sort-results';
+import axios from 'axios';
 
 class FlightResults extends Component {
 constructor(props){
   super(props);
   this.state = {
-    results : [{
-    code: 2,
-    name: "Chan",
-    thumbnail: "anUrl",
-    flightcode: "123",
-    origin: "MDE",
-    destination: "BOG",
-    price: 14000,
-    currency: "COP",
-    date: "12:30 12-05-2017"
-}]
+    results : []
   }
-  // this.props.resutsObservable.then(result=>
-  //   this.setState({
-  //     results: sortResult(this.state.results, result)
-  //   })
-  // )
+
+  this.props.resultsObservable.then(axios.spread((viancaResult, chanResult, topaResult, ibaResult) => {
+
+    if(viancaResult &&
+     viancaResult.status === 200){
+    this.setState({
+      results: sortResult(this.state.results, viancaResult.data)
+    });
+  }
+  if(chanResult && chanResult.status === 200){
+    this.setState({
+      results: sortResult(this.state.results, chanResult.data)
+    });
+  }
+  if(topaResult && topaResult.status === 200){
+    this.setState({
+      results: sortResult(this.state.results, topaResult.data)
+    });
+  }
+    if(ibaResult && ibaResult.status === 200){
+      this.setState({
+        results: sortResult(this.state.results, ibaResult.data)
+      });
+    }
+  }))
 }
 
   render() {
@@ -67,7 +78,7 @@ constructor(props){
                         <Table.Cell >COP {result.price}
                          </Table.Cell>
                     </Table.Row>))}
-                      
+
           </Table.Body>
 
       </Table>

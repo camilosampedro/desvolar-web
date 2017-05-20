@@ -10,7 +10,7 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      phase: RESULT_PHASE,
+      phase: MAIN_PHASE,
       // phase: MAIN_PHASE,
       observable: {}
     }
@@ -24,13 +24,15 @@ class App extends Component {
     } else {
       // TODO: Change this div for "Result"
       // <FlightResults resutsObservable={this.state.observable}></FlightResults>
+      console.log('state', this.state);
       return (
-        <FlightResults resutsObservable={this.state.observable}></FlightResults>
+        <FlightResults resultsObservable={this.state.observable}></FlightResults>
       );
     }
   }
 
   search(filters) {
+    console.log('filters', filters);
     this.setState({phase: RESULT_PHASE, observable: submitAllSearchs(filters)});
   }
 
