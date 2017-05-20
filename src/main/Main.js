@@ -3,7 +3,7 @@ import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import moment from 'moment';
 import './Main.css';
-import logo from './airplane.svg';
+import logo from '../airplane.svg';
 
 class Main extends Component {
   constructor(props){
