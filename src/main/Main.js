@@ -1,3 +1,4 @@
+import React, { Component } from 'react';
 import {Button, Input} from 'semantic-ui-react'
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
@@ -22,11 +23,12 @@ class Main extends Component {
   }
 
   submit(){
-
+    let filters = {};
+    this.props.onChange(filters);
   }
 
   render() {
-    <div className="App">
+    return (<div className="App">
       <div className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <h2>Desvolar.com</h2>
@@ -52,11 +54,11 @@ class Main extends Component {
             <input type="number" max="20" min="1"></input>
           </div>
           <div className="searchButton">
-            <Button>Buscar</Button>
+            <Button onClick={this.submit.bind(this)}>Buscar</Button>
           </div>
         </div>
       </div>
-    </div>
+    </div>);
   }
 }
 export default Main;

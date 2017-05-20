@@ -1,7 +1,10 @@
 import {VIANCA_URL, CHAN_URL, TOPA_URL, IBA_COLOMBIA_URL} from './service-store';
+import {Rx} from 'rxjs';
+var axios = require('axios');
+
 export function submitSearch(filters, apiUrl) {
   let _this = this;
-  axios.post(apiUrl, filters).then(rawResponse => rawResponse.json()).catch(error => console.log(error))
+  return axios.post(apiUrl, filters).then(rawResponse => rawResponse.json()).catch(error => console.log(error))
 }
 
 export function submitAllSearchs(filters) {
