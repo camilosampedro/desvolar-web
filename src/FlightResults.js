@@ -7,6 +7,7 @@ import sortResult from './service/sort-results';
 import axios from 'axios';
 
 class FlightResults extends Component {
+
 constructor(props){
   super(props);
   this.state = {
@@ -40,6 +41,8 @@ constructor(props){
 }
 
   render() {
+    var id = 0;
+
     return (
      <div className="content">
        <img src={logo} className="App-logo" alt="logo" />
@@ -64,7 +67,11 @@ constructor(props){
                 </Table.Header>
 
                 <Table.Body className="infoResult">
-                  {this.state.results.map( (result) => ( <Table.Row>
+                  {this.state.results.map( (result) => {
+                    id++; 
+                    console.log("id "+ id);
+
+                    return  ( <Table.Row key={id}>
                         <Table.Cell >
                             <Checkbox/>
                         </Table.Cell>
@@ -77,7 +84,7 @@ constructor(props){
                         <Table.Cell >{result.name}</Table.Cell>
                         <Table.Cell >COP {result.price}
                          </Table.Cell>
-                    </Table.Row>))}
+                    </Table.Row>)})}
 
           </Table.Body>
 
