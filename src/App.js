@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import logo from './airplane.svg';
 import './App.css';
+import {submitAllSearchs} from './service/search-service';
 
 class App extends Component {
   render() {
@@ -25,6 +26,10 @@ class App extends Component {
         </div>
       </div>
     );
+  }
+
+  search(filters) {
+    submitAllSearchs(filters);
   }
 }
 
