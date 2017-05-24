@@ -54,7 +54,7 @@ constructor(props){
      <div className="content">
        <img src={logo} className="App-logo" alt="logo" />
           <h2>Desvolar.com</h2>
-          <h3 className="title">Vuelo {this.props.origin} <Icon name='arrow right'/> {this.props.destination}
+          <h3 className="title">Resultados {this.props.origin} <Icon name='arrow right'/> {this.props.destination}
             <br/><br/>{this.props.departureDate} - {this.props.arrivalDate}
            </h3>
           <Table celled textAlign='center' size="medium" className="table">
