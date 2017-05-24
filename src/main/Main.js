@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import moment from 'moment';
 import DatePicker from 'react-datepicker';
-import {Button, Input, Form} from 'semantic-ui-react'
+import {Button, Input, Form, Dropdown} from 'semantic-ui-react'
 import 'react-datepicker/dist/react-datepicker.css';
 import './Main.css';
 import logo from '../airplane.svg';
 
-const cities=[{value:'BOG', text:'Bogotá'} ,{value:'MDE', text:'Medellín'} ]
+let cities=[{value:'BOG', text:'Bogotá'} ,{value:'MDE', text:'Medellín'} ]
 
 class Main extends Component {
   constructor(props){
@@ -28,15 +28,19 @@ class Main extends Component {
     this.changePassengers = this.changePassengers.bind(this);
     this.changeCheck = this.changeCheck.bind(this);
   }
-  changeDestination(event){
+  changeDestination(event, data){
+    console.log('DATAD',data.value)
     this.setState({
-      destination: event.target.value
+      destination: data.value
     });
   }
-  changeOrigin(event){
+
+  changeOrigin(event, data){
+    console.log('DATAO',data.value)
     this.setState({
-      origin: event.target.value
+      origin: data.value
     });
+    // city.disable = true
   }
   changeDepartureDate(date){
     //let localDate = moment(date, "MM/DD/YYYY hh:mm:ss A");
@@ -69,6 +73,7 @@ class Main extends Component {
   }
 
   submitStatus(){
+
     let filters = {
       departureDate: this.state.departureDate.format('DD-MM-YYYY'),
       origin: this.state.origin,
@@ -85,6 +90,7 @@ class Main extends Component {
     this.props.onChange(filters);
   }
 
+
   render() {
     return (
     <div className="App">
@@ -94,21 +100,24 @@ class Main extends Component {
         <div className="searchContent">
           <div className="searchField">
             <label>Origen</label>
-            <select value={this.state.origin}  onChange={this.changeOrigin}>
+            <Dropdown placeholder='Select Origen' fluid search selection options={cities} 
+            onChange={(e, value)=>this.changeOrigin(e, value)} required={true}/>            
+            {/*<select value={this.state.origin}  onChange={this.changeOrigin}>
               <option value="" disabled>Ciudad origen...</option>
               {cities.map(city=>(
                 <option value={city.value}>{city.text}</option>
               ))}
-            </select>
+            </select>*/}
           </div>
           <div className="searchField">
             <label>Destino</label>
-            <select value={this.state.destination}onChange={this.changeDestination}>
+            <Dropdown placeholder='Select Destino' fluid search selection options={cities} onChange={(e, value)=>this.changeDestination(e, value)} />
+            {/*<select value={this.state.destination}onChange={this.changeDestination}>
               <option value="" disabled>Ciudad destino...</option>
               {cities.map(city=>(
                 <option value={city.value}>{city.text}</option>
               ))}
-            </select>
+            </select>*/}
           </div>
           <div className="searchField">
             <label>Fecha Ida</label>
@@ -124,6 +133,7 @@ class Main extends Component {
           </div>
           <div className="searchButton">
             <button onClick={this.submitStatus.bind(this)}>Buscar</button>
+          
           </div>
         </div>
       </div>

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Table, Icon, Checkbox } from 'semantic-ui-react'
+import { Table, Icon, Checkbox, Dimmer, Loader } from 'semantic-ui-react'
 import logo from './airplane.svg';
 import './App.css';
 import 'semantic-ui-css/semantic.min.css';
@@ -10,6 +10,7 @@ class FlightResults extends Component {
 
 constructor(props){
   super(props);
+  console.log('PROPS',props)
   this.state = {
     results : []
   }
@@ -42,12 +43,20 @@ constructor(props){
 
   render() {
     var id = 0;
-
+    if(this.state.loading){
+      return (
+              <Dimmer active>
+                <Loader>Loading</Loader>
+              </Dimmer>
+      )
+    }
     return (
      <div className="content">
        <img src={logo} className="App-logo" alt="logo" />
           <h2>Desvolar.com</h2>
-          <h3 className="title">Resultados obtenidos</h3>
+          <h3 className="title">Vuelo {this.props.origin} <Icon name='arrow right'/> {this.props.destination}
+            <br/><br/>{this.props.departureDate} - {this.props.arrivalDate}
+           </h3>
           <Table celled textAlign='center' size="medium" className="table">
               <Table.Header className="header">
                 <Table.Row>
