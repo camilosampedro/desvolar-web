@@ -31,9 +31,7 @@ body{
   align-items: center;
   justify-content: space-around;
   align-items: center;
-  /*background-color: rgba(245,245,220,1);*/
   background-color: rgba(117,84,97,0.9);
-  /*background-color: #755461;*/
   -webkit-box-shadow: 6px 4px 5px 0px rgba(50, 50, 50, 0.36);
   -moz-box-shadow:    6px 4px 5px 0px rgba(50, 50, 50, 0.36);
   box-shadow:         6px 4px 5px 0px rgba(50, 50, 50, 0.36);
@@ -54,12 +52,10 @@ body{
 }
 .searchContent .searchField input{
   border-radius: 5px;
-  /*border: 1px solid #755461;*/
   text-align: center;
   height: 1.5rem;
 }
 label {
-  /*color: #755461;*/
   color: #fff;
   font-weight: 500;
 }
@@ -77,7 +73,7 @@ label {
   text-align: center;
   background-color: #5C8A70;
   color: #fff;
-  font-weight: bold;
+  font-weight: 800;
   border: none;
   width: 20%;
   border-radius: 5px;
@@ -87,11 +83,15 @@ label {
 }
 .searchContent button:hover {
   background-color: #80C89F;
-  /*color: #755461;*/
 }
 
 .ui.fluid.dropdown {
-      width: 90% !important;
+      width: 54% !important;
+      height: 35px !important;
+}
+
+.ui.search.dropdown>.text{
+  bottom: 8px;
 }
 
 @keyframes App-logo-spin {

@@ -176,14 +176,16 @@ button {
 }
 .searchContent .datePicker {
   position: relative;
-  height: 2rem !important;
+  height: 35px !important;
   cursor: pointer;
   outline: none;
+  border: 0px;
   border-radius: 5px;
 }
 .searchContent .passengers {
   position: relative;
-  height: 2rem !important;
+  height: 35px !important;
+  border: 0px;
   outline: none;
 }
 @keyframes App-logo-spin {

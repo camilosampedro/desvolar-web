@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import moment from 'moment';
 import DatePicker from 'react-datepicker';
-import {Button, Input, Form, Dropdown} from 'semantic-ui-react'
+import { Dropdown} from 'semantic-ui-react'
 import 'react-datepicker/dist/react-datepicker.css';
 import './Main.css';
 import logo from '../airplane.svg';
@@ -73,22 +73,25 @@ class Main extends Component {
   }
 
   submitStatus(){
-
+    if (this.state.origin === '' || this.state.destination === '') {
+      alert('Elija una ciudad de origen y de destino');
+      // <div>Llene todos los campos</div>;
+    } else {
     let filters = {
       departureDate: this.state.departureDate.format('DD-MM-YYYY'),
       origin: this.state.origin,
       destination: this.state.destination,
       passengers: this.state.passengers,
-
     }
-    if(this.state.arrivalDate != ''){
+
+    if(this.state.arrivalDate !== ''){
       filters.arrivalDate = this.state.arrivalDate.format('DD-MM-YYYY');
       filters.roundTrip = this.state.roundTrip;
     } else {
       filters.roundTrip = false;
     }
-    this.props.onChange(filters);
-  }
+  this.props.onChange(filters);
+  }}
 
 
   render() {
@@ -101,23 +104,12 @@ class Main extends Component {
           <div className="searchField">
             <label>Origen</label>
             <Dropdown placeholder='Select Origen' fluid search selection options={cities} 
-            onChange={(e, value)=>this.changeOrigin(e, value)} required={true}/>            
-            {/*<select value={this.state.origin}  onChange={this.changeOrigin}>
-              <option value="" disabled>Ciudad origen...</option>
-              {cities.map(city=>(
-                <option value={city.value}>{city.text}</option>
-              ))}
-            </select>*/}
+              onChange={(e, value)=>this.changeOrigin(e, value)} />            
           </div>
           <div className="searchField">
             <label>Destino</label>
-            <Dropdown placeholder='Select Destino' fluid search selection options={cities} onChange={(e, value)=>this.changeDestination(e, value)} />
-            {/*<select value={this.state.destination}onChange={this.changeDestination}>
-              <option value="" disabled>Ciudad destino...</option>
-              {cities.map(city=>(
-                <option value={city.value}>{city.text}</option>
-              ))}
-            </select>*/}
+            <Dropdown placeholder='Select Destino' fluid search selection options={cities} 
+              onChange={(e, value)=>this.changeDestination(e, value)} />
           </div>
           <div className="searchField">
             <label>Fecha Ida</label>
@@ -133,7 +125,6 @@ class Main extends Component {
           </div>
           <div className="searchButton">
             <button onClick={this.submitStatus.bind(this)}>Buscar</button>
-          
           </div>
         </div>
       </div>
