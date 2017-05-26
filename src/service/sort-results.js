@@ -5,6 +5,9 @@ function sortResult(oldResults, newResult){
     result.code = airline.code;
     result.name = airline.name;
     result.thumbnail = airline.thumbnail;
+    let d = result.date;
+    result.date = d.substring(7);
+    result.hour = d.substring(0,5);
     newResultTransformed.push(result);
   }
   let joinedResults = oldResults.concat(newResultTransformed);

@@ -19,8 +19,7 @@ class Main extends Component {
       origin: '',
       destination: '',
       passengers: 1,
-      roundTrip: true,
-      oneWay: true
+      roundTrip: true
     }
     this.changeDepartureDate = this.changeDepartureDate.bind(this);
     this.changeArrivalDate = this.changeArrivalDate.bind(this);
@@ -45,14 +44,14 @@ class Main extends Component {
   }
   changeDepartureDate(date){
     //let localDate = moment(date, "MM/DD/YYYY hh:mm:ss A");
-    if(date.isValid()){
+    if(date.isValid() && (date > moment().startOf('day'))){
       this.setState({
         departureDate: date //localDate.format('DD-MM-YYYY')
       });
     }
   }
   changeArrivalDate(date){
-    if(date.isValid()){
+    if(date.isValid() && (date > moment().startOf('day'))){
       this.setState({
         arrivalDate: date
       });
@@ -63,6 +62,10 @@ class Main extends Component {
     if(Number.isInteger(aux) && aux>0 && aux < 1000){
       this.setState({
         passengers: +aux
+      });
+    }else if(!event.target.value){
+      this.setState({
+        passengers: ''
       });
     }
   }
