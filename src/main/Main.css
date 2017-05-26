@@ -1,8 +1,9 @@
-body{
+body {
   background-image: url(../airplane.jpg);
   background-repeat: no-repeat;
   background-size: 100%;
 }
+
 .App {
   text-align: center;
 }
@@ -20,6 +21,7 @@ body{
 .App-intro {
   font-size: large;
 }
+
 .searchContent {
   position: relative;
   width: 40vw;
@@ -31,18 +33,21 @@ body{
   align-items: center;
   justify-content: space-around;
   align-items: center;
-  background-color: rgba(117,84,97,0.9);
+  background-color: rgba(117, 84, 97, 0.9);
   -webkit-box-shadow: 6px 4px 5px 0px rgba(50, 50, 50, 0.36);
-  -moz-box-shadow:    6px 4px 5px 0px rgba(50, 50, 50, 0.36);
-  box-shadow:         6px 4px 5px 0px rgba(50, 50, 50, 0.36);
+  -moz-box-shadow: 6px 4px 5px 0px rgba(50, 50, 50, 0.36);
+  box-shadow: 6px 4px 5px 0px rgba(50, 50, 50, 0.36);
   border-radius: 5px;
   text-align: left;
   flex-wrap: wrap;
 }
-.searchContent div, .searchContent button{
+
+.searchContent div,
+.searchContent button {
   margin-top: 1vh;
   margin-bottom: 1vh;
 }
+
 .searchContent .searchField {
   position: relative;
   width: 50%;
@@ -50,54 +55,83 @@ body{
   align-items: center;
   flex-direction: column;
 }
-.searchContent .searchField input{
+
+.searchContent .searchField input {
   border-radius: 5px;
   text-align: center;
   height: 1.5rem;
 }
+
 label {
   color: #fff;
   font-weight: 500;
 }
-.searchContent .searchButton{
+
+.searchContent .searchButton {
   position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
   width: 100%;
-
 }
- button {
+
+.ui.button {
   position: relative;
   top: 5%;
   text-align: center;
-  background-color: #5C8A70;
-  color: #fff;
+  background-color: #5C8A70 !important;
+  color: #fff !important;
   font-weight: 800;
   border: none;
   width: 20%;
   border-radius: 5px;
-  height: 2rem;
+  height: 2.5rem;
   cursor: pointer;
-  outline: none;
+  /*outline: none;*/
 }
+
+.checkbox {
+  width: 100%;
+  display: flex;
+  margin-left: 40px;
+  /*color: white;*/
+}
+
+.ui.checkbox {
+  width: 105px;
+}
+
+.ui.checkbox label{
+  color: white;
+}
+
 .searchContent button:hover {
   background-color: #80C89F;
 }
 
 .ui.fluid.dropdown {
-      width: 54% !important;
-      height: 35px !important;
+  width: 54% !important;
+  height: 35px !important;
 }
 
-.ui.search.dropdown>.text{
+.ui.search.dropdown>.text {
   bottom: 8px;
 }
 
 @keyframes App-logo-spin {
-  0% { transform: rotate(0deg); }
-  25% { transform: rotate(20deg); }
-  50% { transform: rotate(0deg); }
-  75% { transform: rotate(-20deg); }
-  100% { transform: rotate(0deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(20deg);
+  }
+  50% {
+    transform: rotate(0deg);
+  }
+  75% {
+    transform: rotate(-20deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
 }

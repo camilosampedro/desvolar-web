@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import moment from 'moment';
 import DatePicker from 'react-datepicker';
-import { Dropdown} from 'semantic-ui-react'
+import { Dropdown, Checkbox, Button} from 'semantic-ui-react'
 import 'react-datepicker/dist/react-datepicker.css';
 import './Main.css';
 import logo from '../airplane.svg';
@@ -20,6 +20,7 @@ class Main extends Component {
       destination: '',
       passengers: 1,
       roundTrip: true,
+      oneWay: true
     }
     this.changeDepartureDate = this.changeDepartureDate.bind(this);
     this.changeArrivalDate = this.changeArrivalDate.bind(this);
@@ -72,6 +73,10 @@ class Main extends Component {
     });
   }
 
+  // handleCheckbox() {
+
+  // }
+
   submitStatus(){
     if (this.state.origin === '' || this.state.destination === '') {
       alert('Elija una ciudad de origen y de destino');
@@ -101,6 +106,14 @@ class Main extends Component {
         <img src={logo} className="App-logo" alt="logo" />
         <h2>Desvolar.com</h2>
         <div className="searchContent">
+          <div className="checkbox">
+            <Checkbox radio label='Solo Ida' 
+            checked={this.state.oneWay.value === true} />
+          {/*</div>*/}
+          {/*<div className="searchField">*/}
+            <Checkbox radio label='Ida y Vuelta'  
+            checked={this.state.oneWay.value === false} />            
+          </div>
           <div className="searchField">
             <label>Origen</label>
             <Dropdown placeholder='Select Origen' fluid search selection options={cities} 
@@ -116,15 +129,22 @@ class Main extends Component {
             <DatePicker className="datePicker" selected={this.state.departureDate} onChange={this.changeDepartureDate}/>
           </div>
           <div className="searchField">
-                <label>Fecha Regreso</label>
-                <DatePicker className="datePicker" selected={this.state.arrivalDate} onChange={this.changeArrivalDate}/>
+            <label>Fecha Regreso</label>
+            {this.state.oneWay ? 
+                <DatePicker className="datePicker" label="Fecha regreso" selected={this.state.arrivalDate} onChange={this.changeArrivalDate}/>:
+                <DatePicker className="datePicker"  label="Fecha regreso" disabled/>}
+
+                {/*<label>Fecha Regreso</label>
+                <DatePicker className="datePicker" selected={this.state.arrivalDate} onChange={this.changeArrivalDate}/>*/}
                 </div>
           <div className="searchField">
             <label>Número de pasajeros</label>
             <input className="passengers" value={this.state.passengers} onChange={this.changePassengers}></input>
           </div>
           <div className="searchButton">
-            <button onClick={this.submitStatus.bind(this)}>Buscar</button>
+            {/*<button onClick={this.submitStatus.bind(this)}>Buscar</button>*/}
+             {this.state.origin && this.state.destination ? 
+                <Button onClick={this.submitStatus.bind(this)}>Buscar</Button>:<Button disabled>Buscar</Button>}
           </div>
         </div>
       </div>

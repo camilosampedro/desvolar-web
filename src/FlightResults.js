@@ -10,7 +10,6 @@ class FlightResults extends Component {
 
 constructor(props){
   super(props);
-  console.log('PROPS',props)
   this.state = {
     results : []
   }
@@ -55,7 +54,7 @@ constructor(props){
        <img src={logo} className="App-logo" alt="logo" />
           <h2>Desvolar.com</h2>
           <h3 className="title">Resultados {this.props.origin} <Icon name='arrow right'/> {this.props.destination}
-            <br/><br/>{this.props.departureDate} - {this.props.arrivalDate}
+            <br/><br/>{this.props.departureDate}  {this.props.arrivalDate}
            </h3>
           <Table celled textAlign='center' size="medium" className="table">
               <Table.Header className="header">
