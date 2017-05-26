@@ -16,7 +16,7 @@ constructor(props){
 
   this.props.resultsObservable.then(axios.spread((viancaResult, chanResult, topaResult, ibaResult) => {
 
-    if(viancaResult &&
+  if(viancaResult &&
      viancaResult.status === 200){
     this.setState({
       results: sortResult(this.state.results, viancaResult.data)
@@ -48,7 +48,7 @@ constructor(props){
        <img src={logo} className="App-logo" alt="logo" />
           <h2>Desvolar.com</h2>
           <h3 className="title">Resultados obtenidos</h3>
-          <Table celled textAlign='center' size="medium" className="table">
+          <Table celled textAlign='center' size="large" className="table">
               <Table.Header className="header">
                 <Table.Row>
                   <Table.HeaderCell >
@@ -68,7 +68,7 @@ constructor(props){
 
                 <Table.Body className="infoResult">
                   {this.state.results.map( (result) => {
-                    id++; 
+                    id++;
                     console.log("id "+ id);
 
                     return  ( <Table.Row key={id}>
@@ -80,9 +80,9 @@ constructor(props){
                           <Icon name='arrow right'/>
                         </Table.Cell>
                         <Table.Cell >{result.destination}</Table.Cell>
-                        <Table.Cell >{result.date}</Table.Cell>
+                        <Table.Cell ><Icon name='calendar'/>{result.date} <Icon name='time'/>{result.hour}</Table.Cell>
                         <Table.Cell >{result.name}</Table.Cell>
-                        <Table.Cell >COP {result.price}
+                        <Table.Cell ><i>COP</i> {result.price}
                          </Table.Cell>
                     </Table.Row>)})}
 

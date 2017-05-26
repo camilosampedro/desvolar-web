@@ -1,7 +1,5 @@
 body {
-  background-image: url(./airplane.jpg) !important;
-  background-repeat: no-repeat !important;
-  background-size: 100% !important;
+  background-image: linear-gradient(to top, #fff1eb 0%, #ace0f9 100%) !important;
 }
 
 .App {
@@ -33,7 +31,7 @@ body {
   align-items: center;
   justify-content: space-around;
   align-items: center;
-  background-color: rgba(117,84,97,0.9);
+  background-color: #9cc2d6;
   -webkit-box-shadow: 6px 4px 5px 0px rgba(50, 50, 50, 0.36);
   -moz-box-shadow: 6px 4px 5px 0px rgba(50, 50, 50, 0.36);
   box-shadow: 6px 4px 5px 0px rgba(50, 50, 50, 0.36);
@@ -156,7 +154,7 @@ flex-direction: column;
   width: 85% !important;
 }
 
-@media (max-width: 1000px) { 
+@media (max-width: 1000px) {
   body {
     background-repeat: repeat-y;
   }
@@ -180,7 +178,7 @@ flex-direction: column;
     flex-wrap: wrap;
     }
   }
-@media (max-width: 575px) { 
+@media (max-width: 575px) {
   body {
     background-image: url(./airplane2.jpg)!important;
     background-color: #000 !important;
