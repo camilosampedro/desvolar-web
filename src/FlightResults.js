@@ -40,12 +40,15 @@ constructor(props){
   }))
 }
 
+reload(){
+  location.reload();
+}
   render() {
     var id = 0;
 
     return (
      <div className="content">
-       <img src={logo} className="App-logo" alt="logo" />
+       <a href="#" onClick={this.reload.bind(this)}><img src={logo} className="App-logo" alt="logo" /></a>
           <h2>Desvolar.com</h2>
           <h3 className="title">Resultados obtenidos</h3>
           <Table celled textAlign='center' size="large" className="table">
