@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Table, Icon, Checkbox, Dimmer, Loader } from 'semantic-ui-react'
+import { Table, Icon, Checkbox, Dimmer, Loader, Button } from 'semantic-ui-react'
 import logo from './airplane.svg';
 import './App.css';
 import 'semantic-ui-css/semantic.min.css';
@@ -45,68 +45,68 @@ reload(){
 }
   render() {
     var id = 0;
-    if(this.state.loading){
+    if(this.state.results.length === 0){
       return (
               <Dimmer active>
-                <Loader>Loading</Loader>
+                <Loader>Buscando Vuelos...</Loader>
               </Dimmer>
       )
+    }else{
+      return (
+      <div className="content">
+        <img src={logo} className="App-logo" alt="logo" />
+            <h2>Desvolar.com</h2>
+            <h3 className="title">Resultados {this.props.origin} <Icon name='arrow right'/> {this.props.destination}
+              <br/><br/>{this.props.departureDate}  {this.props.arrivalDate}
+            </h3>
+            <Table celled textAlign='center' size="medium" className="table">
+                <Table.Header className="header">
+                  <Table.Row>
+                    <Table.HeaderCell >
+                      <Icon name='plane' size='large'/>
+                    </Table.HeaderCell>
+                    <Table.HeaderCell >Origen</Table.HeaderCell>
+                    <Table.HeaderCell >
+                      <Icon name='arrow right'/>
+                    </Table.HeaderCell>
+                    <Table.HeaderCell >Destino</Table.HeaderCell>
+                    <Table.HeaderCell >Fecha</Table.HeaderCell>
+                    <Table.HeaderCell >Aerolinea</Table.HeaderCell>
+                    <Table.HeaderCell >Tarifa</Table.HeaderCell>
+                    {/*<Table.HeaderCell >Tarifa</Table.HeaderCell>            */}
+                  </Table.Row>
+                  </Table.Header>
+
+                  <Table.Body className="infoResult">
+                    {this.state.results.map( (result) => {
+                      id++;
+                      console.log("id "+ id);
+
+                      return  ( <Table.Row key={id}>
+                          <Table.Cell >
+                              <Checkbox/>
+                          </Table.Cell>
+                          <Table.Cell >{result.origin}</Table.Cell>
+                          <Table.Cell >
+                            <Icon name='arrow right'/>
+                          </Table.Cell>
+                          <Table.Cell >{result.destination}</Table.Cell>
+                          <Table.Cell ><Icon name='calendar'/>{result.date} <Icon name='time'/>{result.hour}</Table.Cell>
+                          <Table.Cell >{result.name}</Table.Cell>
+                          <Table.Cell ><i>COP</i> {result.price}
+                          </Table.Cell>
+                      </Table.Row>)})}
+
+            </Table.Body>
+
+        </Table>
+        <br/>
+        <Button onClick={this.reload.bind(this)}>Hacer otra busqueda</Button>
+        {/*<a href="#" onClick={this.reload.bind(this)}><img src={logo} className="App-logo" alt="logo" /></a>*/}
+        
+      </div>
+      );
     }
-    return (
-     <div className="content">
-       <a href="#" onClick={this.reload.bind(this)}><img src={logo} className="App-logo" alt="logo" /></a>
-          <h2>Desvolar.com</h2>
-<<<<<<< HEAD
-          <h3 className="title">Resultados {this.props.origin} <Icon name='arrow right'/> {this.props.destination}
-            <br/><br/>{this.props.departureDate}  {this.props.arrivalDate}
-           </h3>
-          <Table celled textAlign='center' size="medium" className="table">
-=======
-          <h3 className="title">Resultados obtenidos</h3>
-          <Table celled textAlign='center' size="large" className="table">
->>>>>>> vanessaperez
-              <Table.Header className="header">
-                <Table.Row>
-                  <Table.HeaderCell >
-                    <Icon name='plane' size='large'/>
-                  </Table.HeaderCell>
-                  <Table.HeaderCell >Origen</Table.HeaderCell>
-                  <Table.HeaderCell >
-                    <Icon name='arrow right'/>
-                  </Table.HeaderCell>
-                  <Table.HeaderCell >Destino</Table.HeaderCell>
-                  <Table.HeaderCell >Fecha</Table.HeaderCell>
-                  <Table.HeaderCell >Aerolinea</Table.HeaderCell>
-                  <Table.HeaderCell >Tarifa</Table.HeaderCell>
-                  {/*<Table.HeaderCell >Tarifa</Table.HeaderCell>            */}
-                </Table.Row>
-                </Table.Header>
-
-                <Table.Body className="infoResult">
-                  {this.state.results.map( (result) => {
-                    id++;
-                    console.log("id "+ id);
-
-                    return  ( <Table.Row key={id}>
-                        <Table.Cell >
-                            <Checkbox/>
-                        </Table.Cell>
-                        <Table.Cell >{result.origin}</Table.Cell>
-                        <Table.Cell >
-                          <Icon name='arrow right'/>
-                        </Table.Cell>
-                        <Table.Cell >{result.destination}</Table.Cell>
-                        <Table.Cell ><Icon name='calendar'/>{result.date} <Icon name='time'/>{result.hour}</Table.Cell>
-                        <Table.Cell >{result.name}</Table.Cell>
-                        <Table.Cell ><i>COP</i> {result.price}
-                         </Table.Cell>
-                    </Table.Row>)})}
-
-          </Table.Body>
-
-      </Table>
-     </div>
-    );
   }
 }
 

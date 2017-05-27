@@ -1,7 +1,7 @@
 body {
   background-image: url(../airplane.jpg);
   background-repeat: no-repeat;
-  background-size: 100%;
+  background-size: 100vw 100vh;
 }
 
 .App {
@@ -75,9 +75,24 @@ label {
   width: 100%;
 }
 
-.ui.button {
+.btn .ui.button {
   position: relative;
   top: 5%;
+  text-align: center;
+  background-color: #5C8A70 !important;
+  color: #fff !important;
+  font-weight: 800;
+  border: none;
+  width: 100%;
+  border-radius: 5px;
+  height: 2.5rem;
+  cursor: pointer;
+  /*outline: none;*/
+}
+
+.ui.button {
+  /*position: relative;
+  top: 5%;*/
   text-align: center;
   background-color: #5C8A70 !important;
   color: #fff !important;
@@ -93,17 +108,23 @@ label {
 .checkbox {
   width: 100%;
   display: flex;
-  margin-left: 40px;
+  justify-content: center;
+  align-items: center;
   /*color: white;*/
 }
 
-.ui.checkbox {
-  width: 105px;
+/*.ui.toggle.checkbox input:checked~.box:before, 
+.ui.toggle.checkbox input:checked~label:before{
+  background-color: rgb(135, 39, 92)!important;
+}*/
+
+.checkbox label{
+  color: white !important;
 }
 
-.ui.checkbox label{
-  color: white;
-}
+/*.checkbox label:last-child{
+      margin-left: 41px !important;
+}*/
 
 .searchContent button:hover {
   background-color: #80C89F;

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import moment from 'moment';
 import DatePicker from 'react-datepicker';
-import { Dropdown, Checkbox, Button} from 'semantic-ui-react'
+import { Dropdown, Checkbox, Button, Label, Icon} from 'semantic-ui-react'
 import 'react-datepicker/dist/react-datepicker.css';
 import './Main.css';
 import logo from '../airplane.svg';
@@ -19,7 +19,7 @@ class Main extends Component {
       origin: '',
       destination: '',
       passengers: 1,
-      roundTrip: true
+      roundTrip: false
     }
     this.changeDepartureDate = this.changeDepartureDate.bind(this);
     this.changeArrivalDate = this.changeArrivalDate.bind(this);
@@ -29,14 +29,12 @@ class Main extends Component {
     this.changeCheck = this.changeCheck.bind(this);
   }
   changeDestination(event, data){
-    console.log('DATAD',data.value)
     this.setState({
       destination: data.value
     });
   }
 
   changeOrigin(event, data){
-    console.log('DATAO',data.value)
     this.setState({
       origin: data.value
     });
@@ -72,19 +70,17 @@ class Main extends Component {
   changeCheck(event){
     console.info( event.target.checked);
     this.setState({
-      roundTrip: event.target.checked
+    });
+  }
+  changeToggle(event, data){
+    console.log(data);
+    this.setState({
+      roundTrip: data.checked
     });
   }
 
-  // handleCheckbox() {
-
-  // }
-
   submitStatus(){
-    if (this.state.origin === '' || this.state.destination === '') {
-      alert('Elija una ciudad de origen y de destino');
-      // <div>Llene todos los campos</div>;
-    } else {
+    
     let filters = {
       departureDate: this.state.departureDate.format('DD-MM-YYYY'),
       origin: this.state.origin,
@@ -99,7 +95,7 @@ class Main extends Component {
       filters.roundTrip = false;
     }
   this.props.onChange(filters);
-  }}
+  }
 
 
   render() {
@@ -110,12 +106,9 @@ class Main extends Component {
         <h2>Desvolar.com</h2>
         <div className="searchContent">
           <div className="checkbox">
-            <Checkbox radio label='Solo Ida' 
-            checked={this.state.oneWay.value === true} />
-          {/*</div>*/}
-          {/*<div className="searchField">*/}
-            <Checkbox radio label='Ida y Vuelta'  
-            checked={this.state.oneWay.value === false} />            
+              {/*<label>Ida</label>          */}
+            <Checkbox toggle onChange={(e, value)=>this.changeToggle(e,value)}/> 
+              <label>Ida y regreso</label>          
           </div>
           <div className="searchField">
             <label>Origen</label>
@@ -129,25 +122,41 @@ class Main extends Component {
           </div>
           <div className="searchField">
             <label>Fecha Ida</label>
-            <DatePicker className="datePicker" selected={this.state.departureDate} onChange={this.changeDepartureDate}/>
+            <DatePicker className="datePicker" selected={this.state.departureDate} onChange={this.changeDepartureDate} />
           </div>
-          <div className="searchField">
-            <label>Fecha Regreso</label>
-            {this.state.oneWay ? 
-                <DatePicker className="datePicker" label="Fecha regreso" selected={this.state.arrivalDate} onChange={this.changeArrivalDate}/>:
-                <DatePicker className="datePicker"  label="Fecha regreso" disabled/>}
-
-                {/*<label>Fecha Regreso</label>
+            {this.state.roundTrip ? 
+              <div className="searchField">
+              <label>Fecha Regreso</label>
+                <DatePicker className="datePicker" label="Fecha regreso" selected={this.state.arrivalDate} onChange={this.changeArrivalDate}/>
+              </div> :
+                null}
+              {/*<label>Fecha Regreso</label>
                 <DatePicker className="datePicker" selected={this.state.arrivalDate} onChange={this.changeArrivalDate}/>*/}
-                </div>
           <div className="searchField">
             <label>Número de pasajeros</label>
             <input className="passengers" value={this.state.passengers} onChange={this.changePassengers}></input>
           </div>
           <div className="searchButton">
-            {/*<button onClick={this.submitStatus.bind(this)}>Buscar</button>*/}
-             {this.state.origin && this.state.destination ? 
-                <Button onClick={this.submitStatus.bind(this)}>Buscar</Button>:<Button disabled>Buscar</Button>}
+             {!this.state.origin || !this.state.destination ? 
+              <div>
+                <Label>
+                  <Icon name='info circle' size='large' color='black'/>
+                  Seleccione una ciudad de origen y de destino
+                </Label>
+              </div>:
+                <div>
+                  {this.state.origin !== this.state.destination ?
+                    <div className="btn">
+                      <Button onClick={this.submitStatus.bind(this)}>Buscar</Button>
+                    </div>:
+                        <Label>
+                          <Icon name='info circle' size='large' color='black'/>
+                          Origen y Destino no pueden ser iguales 
+                        </Label>}
+                  
+                {/*<Button onClick={this.submitStatus.bind(this)}>Buscar</Button>*/}
+                </div>
+              }
           </div>
         </div>
       </div>

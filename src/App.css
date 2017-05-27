@@ -1,5 +1,8 @@
 body {
-  background-image: linear-gradient(to top, #fff1eb 0%, #ace0f9 100%) !important;
+  /*background-image: linear-gradient(to top, #fff1eb 0%, #ace0f9 100%) !important;*/
+     background-image: url(./airplane.jpg) !important;
+  background-repeat: no-repeat !important;
+background-size: 100vw 100vh !important;
 }
 
 .App {
@@ -31,13 +34,13 @@ body {
   align-items: center;
   justify-content: space-around;
   align-items: center;
-  background-color: #9cc2d6;
+  background-color: rgba(117,84,97,0.9);
   -webkit-box-shadow: 6px 4px 5px 0px rgba(50, 50, 50, 0.36);
   -moz-box-shadow: 6px 4px 5px 0px rgba(50, 50, 50, 0.36);
   box-shadow: 6px 4px 5px 0px rgba(50, 50, 50, 0.36);
   border-radius: 5px;
   text-align: left;
-  flex-wrap: wrap;
+flex-wrap: wrap;
 }
 
 .searchContent div,
