@@ -11,6 +11,10 @@ class App extends Component {
     super(props);
     this.state = {
       phase: MAIN_PHASE,
+      origin: '',
+      destination: '',
+      departureDate: '',
+      arrivalDate: '',
       // phase: MAIN_PHASE,
       observable: {}
     }
@@ -26,14 +30,25 @@ class App extends Component {
       // <FlightResults resutsObservable={this.state.observable}></FlightResults>
       console.log('state', this.state);
       return (
-        <FlightResults resultsObservable={this.state.observable}></FlightResults>
+        <FlightResults resultsObservable={this.state.observable} 
+        origin={this.state.origin} 
+        destination={this.state.destination}
+        departureDate={this.state.departureDate}
+        arrivalDate={this.state.arrivalDate}>
+        </FlightResults>
       );
     }
   }
 
   search(filters) {
     console.log('filters', filters);
-    this.setState({phase: RESULT_PHASE, observable: submitAllSearchs(filters)});
+    this.setState({
+      phase: RESULT_PHASE, 
+      observable: submitAllSearchs(filters), 
+      origin: filters.origin, 
+      destination: filters.destination,
+      departureDate: filters.departureDate,
+      arrivalDate: filters.arrivalDate});
   }
 
 }

@@ -1,7 +1,8 @@
 body {
-  background-image: url(./airplane.jpg) !important;
+  /*background-image: linear-gradient(to top, #fff1eb 0%, #ace0f9 100%) !important;*/
+     background-image: url(./airplane.jpg) !important;
   background-repeat: no-repeat !important;
-  background-size: 100% !important;
+background-size: 100vw 100vh !important;
 }
 
 .App {
@@ -39,7 +40,7 @@ body {
   box-shadow: 6px 4px 5px 0px rgba(50, 50, 50, 0.36);
   border-radius: 5px;
   text-align: left;
-  flex-wrap: wrap;
+flex-wrap: wrap;
 }
 
 .searchContent div,
@@ -102,14 +103,16 @@ button {
 }
 .searchContent .datePicker {
   position: relative;
-  height: 2rem !important;
+  height: 35px !important;
   cursor: pointer;
   outline: none;
+  border: 0px;
   border-radius: 5px;
 }
 .searchContent .passengers {
   position: relative;
-  height: 2rem !important;
+  height: 35px !important;
+  border: 0px;
   outline: none;
 }
 @keyframes App-logo-spin {
@@ -148,7 +151,7 @@ flex-direction: column;
     border-radius: 5px;
     box-shadow: 3px 3px 20px 0px black;
     width: 85%;
-    text-align: center;
+    /*text-align: center;*/
 }
 
 
@@ -156,7 +159,7 @@ flex-direction: column;
   width: 85% !important;
 }
 
-@media (max-width: 1000px) { 
+@media (max-width: 1000px) {
   body {
     background-repeat: repeat-y;
   }
@@ -180,7 +183,7 @@ flex-direction: column;
     flex-wrap: wrap;
     }
   }
-@media (max-width: 575px) { 
+@media (max-width: 575px) {
   body {
     background-image: url(./airplane2.jpg)!important;
     background-color: #000 !important;
