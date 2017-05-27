@@ -105,10 +105,12 @@ class Main extends Component {
         <img src={logo} className="App-logo" alt="logo" />
         <h2>Desvolar.com</h2>
         <div className="searchContent">
-          <div className="checkbox">
-              {/*<label>Ida</label>          */}
-            <Checkbox toggle onChange={(e, value)=>this.changeToggle(e,value)}/> 
-              <label>Ida y regreso</label>          
+          <div className="checkContainer">
+            <div className="checkbox">
+                <label>Ida</label>          
+              <Checkbox slider onChange={(e, value)=>this.changeToggle(e,value)}/> 
+                <label>Ida y regreso</label>          
+            </div>
           </div>
           <div className="searchField">
             <label>Origen</label>

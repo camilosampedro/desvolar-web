@@ -21,7 +21,11 @@ body {
 .App-intro {
   font-size: large;
 }
-
+.checkContainer{
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
 .searchContent {
   position: relative;
   width: 40vw;
@@ -106,9 +110,9 @@ label {
 }
 
 .checkbox {
-  width: 100%;
+  width: 40%;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   /*color: white;*/
 }
