@@ -42,14 +42,14 @@ class Main extends Component {
   }
   changeDepartureDate(date){
     //let localDate = moment(date, "MM/DD/YYYY hh:mm:ss A");
-    if(date.isValid() && (date > moment().startOf('day'))){
+    if(date.isValid() && (date >= moment().startOf('day'))){
       this.setState({
         departureDate: date //localDate.format('DD-MM-YYYY')
       });
     }
   }
   changeArrivalDate(date){
-    if(date.isValid() && (date > moment().startOf('day'))){
+    if(date.isValid() && (date >= moment().startOf('day'))){
       this.setState({
         arrivalDate: date
       });
