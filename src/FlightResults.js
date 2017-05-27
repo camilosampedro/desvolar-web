@@ -81,7 +81,9 @@ constructor(props){
                         </Table.Cell>
                         <Table.Cell >{result.destination}</Table.Cell>
                         <Table.Cell >{result.date}</Table.Cell>
-                        <Table.Cell >{result.name}</Table.Cell>
+                        <Table.Cell >
+                          <img src={result.thumbnail} width="50"></img>
+                        </Table.Cell>
                         <Table.Cell >COP {result.price}
                          </Table.Cell>
                     </Table.Row>)})}
