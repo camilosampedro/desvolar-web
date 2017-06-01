@@ -1,10 +1,13 @@
 import React, {Component} from 'react';
 import Main from './main/Main'
 import FlightResults from './FlightResults'
+import Book from './Book'
 import {submitAllSearchs} from './service/search-service';
+import Rx from 'rxjs';
 
 const MAIN_PHASE = 0;
 const RESULT_PHASE = 1;
+const BOOK_PHASE = 2;
 
 class App extends Component {
   constructor(props) {
@@ -23,7 +26,11 @@ class App extends Component {
   render() {
     if (this.state.phase === MAIN_PHASE) {
       return (
-        <Main onChange={this.search.bind(this)}></Main>
+          <Main onChange={this.search.bind(this)} onSeeReservations={this.reservation.bind(this)}></Main>
+      );
+    } else if (this.state.phase === BOOK_PHASE) {
+      return (
+        <Book resultsObservable={this.state.observable}></Book>
       );
     } else {
       // TODO: Change this div for "Result"
@@ -49,6 +56,33 @@ class App extends Component {
       destination: filters.destination,
       departureDate: filters.departureDate,
       arrivalDate: filters.arrivalDate});
+  }
+
+  reservation(){    
+    this.setState({
+      phase: BOOK_PHASE, 
+      observable: Rx.Observable.of({
+        status: 200,
+        data: {
+          "airline": {
+              "code": "2215",
+              "name": "TOPA",
+              "thumbnail": "http://shmector.com/_ph/12/221844079.png"
+          },
+          "results": [{
+              "airline": "TOPA",
+              "flightCode": "20",
+              "origin": "BOG",
+              "destination": "MDE",
+              "price": 275000,
+              "currency": "COP",
+              "date": "12:30 2017-05-31",
+              "roundTrip": null,
+              "passengers": 50
+          }]
+      }
+      }
+      ).toPromise()});
   }
 
 }

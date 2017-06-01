@@ -97,6 +97,9 @@ class Main extends Component {
   this.props.onChange(filters);
   }
 
+ reservation() {
+   this.props.onSeeReservations();
+ }
 
   render() {
     return (
@@ -158,7 +161,10 @@ class Main extends Component {
                   
                 {/*<Button onClick={this.submitStatus.bind(this)}>Buscar</Button>*/}
                 </div>
-              }
+              }              
+          </div>
+          <div className="searchButton">
+            <Button onClick={this.reservation.bind(this)}>Ver reservas</Button>
           </div>
         </div>
       </div>
