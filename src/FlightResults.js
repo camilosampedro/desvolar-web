@@ -59,7 +59,7 @@ reload(){
             <h3 className="title">Resultados {this.props.origin} <Icon name='arrow right'/> {this.props.destination}
               <br/><br/>{this.props.departureDate}  {this.props.arrivalDate}
             </h3>
-            <Table celled textAlign='center' size="medium" className="table">
+            <Table celled textAlign='center' size="large" className="table">
                 <Table.Header className="header">
                   <Table.Row>
                     <Table.HeaderCell >
