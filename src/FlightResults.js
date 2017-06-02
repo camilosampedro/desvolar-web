@@ -89,7 +89,7 @@ reload(){
                             <Icon name='arrow right'/>
                           </Table.Cell>
                           <Table.Cell >{result.destination}</Table.Cell>
-                          <Table.Cell ><Icon name='calendar'/>{result.date} <Icon name='time'/>{result.hour}</Table.Cell>
+                          <Table.Cell ><Icon name='calendar'/>{result.date}<Icon name='time'/>{result.hour}</Table.Cell>
                           <Table.Cell >{result.thumbnail ? <img src={result.thumbnail} width="50"></img>: result.name}</Table.Cell>
                           <Table.Cell ><i>COP</i> {result.price}
                           </Table.Cell>
@@ -100,7 +100,7 @@ reload(){
         <br/>
         <Button onClick={this.reload.bind(this)}>Hacer otra busqueda</Button>
         {/*<a href="#" onClick={this.reload.bind(this)}><img src={logo} className="App-logo" alt="logo" /></a>*/}
-        
+
       </div>
       );
     }
