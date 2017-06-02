@@ -4,8 +4,8 @@ import DatePicker from 'react-datepicker';
 import { Dropdown, Checkbox, Button, Label, Icon} from 'semantic-ui-react'
 import 'react-datepicker/dist/react-datepicker.css';
 import './Main.css';
-import { firebaseAuth } from '../config/constants'
 import logo from '../airplane.svg';
+import {auth, logout} from '../service/firebase-service'
 
 let cities=[{value:'BOG', text:'Bogotá'} ,{value:'MDE', text:'Medellín'} ]
 
@@ -104,14 +104,7 @@ class Main extends Component {
 // }
 
 handleAuth(){
-    // console.log("Login:", this.state.login); 
-    // var user = null; 
-    var provider = new firebaseAuth.GoogleAuthProvider();
-    provider.setCustomParameters({
-      hd: "udea.edu.co"
-    });
-
-    firebaseAuth().signInWithPopup(provider).then((result) => {
+    auth().then((result) => {
       console.log("Signed in as:", result);
       if (result.user.email.endsWith('@udea.edu.co')) {
             // this.handleAuthState();
@@ -122,22 +115,21 @@ handleAuth(){
     }).catch(function (error) {
       console.error("Authentication failed:", error);
     });
-
 }
 
-handleAuthState(){
-  firebaseAuth().onAuthStateChanged(user => {
-    if (user){
-      console.log("Usuario:", user)
-        this.setState({ user: user })
-      }else{
-        this.setState({ user: null })
-      }
-    })
-}
+// handleAuthState(){
+//   firebaseAuth().onAuthStateChanged(user => {
+//     if (user){
+//       console.log("Usuario:", user)
+//         this.setState({ user: user })
+//       }else{
+//         this.setState({ user: null })
+//       }
+//     })
+// }
 
 handleLogout(){
-    firebaseAuth().signOut().then(() => console.log("Desconectado"))
+    logout().then(() => console.log("Desconectado"))
     .catch(error => console.error('Error: ', error)) 
 }
 
