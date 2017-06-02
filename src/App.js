@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import Main from './main/Main'
 import FlightResults from './FlightResults'
-import { Menu} from 'semantic-ui-react'
+// import { Menu} from 'semantic-ui-react'
 import {submitAllSearchs} from './service/search-service';
 
 const MAIN_PHASE = 0;

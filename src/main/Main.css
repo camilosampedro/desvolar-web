@@ -4,9 +4,9 @@ body {
   background-size: 100vw 100vh;
 }
 
-/*.App {
+.App {
   text-align: center;
-}*/
+}
 
 .App-logo {
   animation: App-logo-spin infinite 10s linear;
@@ -16,6 +16,11 @@ body {
 .App-header {
   height: 150px;
   padding: 20px;
+}
+
+.btn-signIn{
+  margin-left: 60em !important;
+  margin-top: 0.5em !important;
 }
 
 .App-intro {
