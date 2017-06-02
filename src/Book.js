@@ -44,12 +44,12 @@ reload(){
             <h2>Desvolar.com</h2>
             <h3 className="title">Reservas 
             </h3>
-            <Table celled textAlign='center' size="large" className="table">
+            <Table celled selectable textAlign='center' size="large" className="table">
                 <Table.Header className="header">
                   <Table.Row>
                     <Table.HeaderCell >
                       #
-                    </Table.HeaderCell>
+                    </Table.HeaderCell >
                     <Table.HeaderCell >Origen</Table.HeaderCell>
                     <Table.HeaderCell >
                       <Icon name='arrow right'/>
@@ -68,11 +68,11 @@ reload(){
                           <Table.Cell >
                               {++id}
                           </Table.Cell>
-                          <Table.Cell >{result.origin}</Table.Cell>
+                          <Table.Cell positive >{result.origin}</Table.Cell>
                           <Table.Cell >
                             <Icon name='arrow right'/>
                           </Table.Cell>
-                          <Table.Cell >{result.destination}</Table.Cell>
+                          <Table.Cell positive>{result.destination}</Table.Cell>
                           <Table.Cell ><Icon name='calendar'/>{result.date}<Icon name='time'/>{result.hour}</Table.Cell>
                           <Table.Cell >{result.thumbnail ? <img src={result.thumbnail} width="50"></img>: result.name}</Table.Cell>
                           <Table.Cell ><i>{result.currency}</i> {result.price}
