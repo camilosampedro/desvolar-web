@@ -5,7 +5,7 @@ import { Dropdown, Checkbox, Button, Label, Icon} from 'semantic-ui-react'
 import 'react-datepicker/dist/react-datepicker.css';
 import './Main.css';
 import logo from '../airplane.svg';
-import {auth, logout} from '../service/firebase-service'
+import {auth, logout, isLoggedIn} from '../service/firebase-service'
 
 let cities=[{value:'BOG', text:'Bogotá'} ,{value:'MDE', text:'Medellín'} ]
 
@@ -82,7 +82,7 @@ class Main extends Component {
   }
 
   submitStatus(){
-    
+
     let filters = {
       departureDate: this.state.departureDate.format('DD-MM-YYYY'),
       origin: this.state.origin,
@@ -132,7 +132,7 @@ handleLogout(){
     logout().then(() => {
       this.setState({user: ''});
       console.log("Desconectado")})
-    .catch(error => console.error('Error: ', error)) 
+    .catch(error => console.error('Error: ', error))
 }
 
  reservation() {
@@ -143,11 +143,11 @@ handleLogout(){
     return (
     <div className="App">
       {/*<div>*/}
-        {this.state.user ? 
+        {this.state.user ?
           <div>
             <Label>{this.state.user}</Label>
             <Button  className="btn-reservas">Mis Reservas</Button>
-            <Button  className="btn-logout" onClick={this.handleLogout.bind(this)}>Cerrar Sesión</Button>            
+            <Button  className="btn-logout" onClick={this.handleLogout.bind(this)}>Cerrar Sesión</Button>
           </div>:
           <Button  className="btn-signIn" onClick={this.handleAuth.bind(this)}>Iniciar Sesión</Button>}
       {/*</div>*/}
@@ -157,26 +157,26 @@ handleLogout(){
         <div className="searchContent">
           <div className="checkContainer">
             <div className="checkbox">
-                <label>Ida</label>          
-              <Checkbox slider onChange={(e, value)=>this.changeToggle(e,value)}/> 
-                <label>Ida y regreso</label>          
+                <label>Ida</label>
+              <Checkbox slider onChange={(e, value)=>this.changeToggle(e,value)}/>
+                <label>Ida y regreso</label>
             </div>
           </div>
           <div className="searchField">
             <label>Origen</label>
-            <Dropdown placeholder='Select Origen' fluid search selection options={cities} 
-              onChange={(e, value)=>this.changeOrigin(e, value)} />            
+            <Dropdown placeholder='Select Origen' fluid search selection options={cities}
+              onChange={(e, value)=>this.changeOrigin(e, value)} />
           </div>
           <div className="searchField">
             <label>Destino</label>
-            <Dropdown placeholder='Select Destino' fluid search selection options={cities} 
+            <Dropdown placeholder='Select Destino' fluid search selection options={cities}
               onChange={(e, value)=>this.changeDestination(e, value)} />
           </div>
           <div className="searchField">
             <label>Fecha Ida</label>
             <DatePicker className="datePicker" selected={this.state.departureDate} onChange={this.changeDepartureDate} />
           </div>
-            {this.state.roundTrip ? 
+            {this.state.roundTrip ?
               <div className="searchField">
               <label>Fecha Regreso</label>
                 <DatePicker className="datePicker" label="Fecha regreso" selected={this.state.arrivalDate} onChange={this.changeArrivalDate}/>
@@ -189,7 +189,7 @@ handleLogout(){
             <input className="passengers" value={this.state.passengers} onChange={this.changePassengers}></input>
           </div>
           <div className="searchButton">
-             {!this.state.origin || !this.state.destination ? 
+             {!this.state.origin || !this.state.destination ?
               <div>
                 <Label>
                   <Icon name='info circle' size='large' color='black'/>
@@ -203,16 +203,19 @@ handleLogout(){
                     </div>:
                         <Label>
                           <Icon name='info circle' size='large' color='black'/>
-                          Origen y Destino no pueden ser iguales 
+                          Origen y Destino no pueden ser iguales
                         </Label>}
-                  
+
                 {/*<Button onClick={this.submitStatus.bind(this)}>Buscar</Button>*/}
                 </div>
-              }              
+              }
           </div>
-          <div className="searchButton">
-            <Button onClick={this.reservation.bind(this)}>Ver reservas</Button>
-          </div>
+          {
+            (isLoggedIn()) &&
+            <div className="searchButton">
+              <Button onClick={this.reservation.bind(this)}>Ver reservas</Button>
+            </div>
+          }
         </div>
       </div>
     </div>);

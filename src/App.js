@@ -4,6 +4,7 @@ import FlightResults from './FlightResults'
 import Book from './Book'
 import {submitAllSearchs} from './service/search-service';
 import Rx from 'rxjs';
+import {submitAllReserveSearch} from './service/reserve-service';
 
 const MAIN_PHASE = 0;
 const RESULT_PHASE = 1;
@@ -27,7 +28,7 @@ class App extends Component {
 
     if (this.state.phase === MAIN_PHASE) {
       return (
-          <Main onChange={this.search.bind(this)} onSeeReservations={this.reservation.bind(this)}></Main>
+        <Main onChange={this.search.bind(this)} onSeeReservations={this.reservation.bind(this)}></Main>
       );
     } else if (this.state.phase === BOOK_PHASE) {
       return (
@@ -38,12 +39,7 @@ class App extends Component {
       // <FlightResults resutsObservable={this.state.observable}></FlightResults>
       console.log('state', this.state);
       return (
-        <FlightResults resultsObservable={this.state.observable}
-        origin={this.state.origin}
-        destination={this.state.destination}
-        departureDate={this.state.departureDate}
-        arrivalDate={this.state.arrivalDate}>
-        </FlightResults>
+        <FlightResults resultsObservable={this.state.observable} origin={this.state.origin} destination={this.state.destination} departureDate={this.state.departureDate} arrivalDate={this.state.arrivalDate}></FlightResults>
       );
     }
   }
@@ -56,34 +52,15 @@ class App extends Component {
       origin: filters.origin,
       destination: filters.destination,
       departureDate: filters.departureDate,
-      arrivalDate: filters.arrivalDate});
+      arrivalDate: filters.arrivalDate
+    });
   }
 
-  reservation(){
+  reservation() {
     this.setState({
       phase: BOOK_PHASE,
-      observable: Rx.Observable.of({
-        status: 200,
-        data: {
-          "airline": {
-              "code": "2215",
-              "name": "TOPA",
-              "thumbnail": "http://shmector.com/_ph/12/221844079.png"
-          },
-          "results": [{
-              "airline": "TOPA",
-              "flightCode": "20",
-              "origin": "BOG",
-              "destination": "MDE",
-              "price": 275000,
-              "currency": "COP",
-              "date": "12:30 2017-05-31",
-              "roundTrip": null,
-              "passengers": 50
-          }]
-      }
-      }
-      ).toPromise()});
+      observable: submitAllReserveSearch()
+    });
   }
 
 }

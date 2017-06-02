@@ -14,6 +14,8 @@ constructor(props){
     results : []
   }
 
+  console.log('props', props);
+
   this.props.resultsObservable.then((reservationsResult) => {
 
     if(reservationsResult &&
@@ -42,14 +44,14 @@ reload(){
       <div className="content">
         <img src={logo} className="App-logo" alt="logo" />
             <h2>Desvolar.com</h2>
-            <h3 className="title">Reservas 
+            <h3 className="title">Reservas
             </h3>
             <Table celled selectable textAlign='center' size="large" className="table">
                 <Table.Header className="header">
                   <Table.Row>
-                    <Table.HeaderCell >
+                    <Table.HeaderCell>
                       #
-                    </Table.HeaderCell >
+                    </Table.HeaderCell>
                     <Table.HeaderCell >Origen</Table.HeaderCell>
                     <Table.HeaderCell >
                       <Icon name='arrow right'/>

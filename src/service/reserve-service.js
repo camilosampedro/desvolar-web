@@ -1,4 +1,6 @@
 import axios from 'axios';
+import {getAuthInfo} from './firebase-service';
+import {VIANCA, CHAN, TOPA, IBA_COLOMBIA} from './service-store';
 
 export const ERROR_RESULT = 'ERROR';
 export const RESERVED_RESULT = 'R';
@@ -18,6 +20,16 @@ export function submitReserve(reserve, apiUrl) {
 
 export function searchForReserve(apiUrl) {
   let _this = this;
-  let url = apiUrl + '?token=';// + getToken();
-  return axios.get();
+  let url = apiUrl + '?token=' + getAuthInfo().token;// + getToken();
+  return axios.get(url);
+}
+
+export function submitAllReserveSearch() {
+  console.log('Fetching reserve searchs');
+  let viancaResult = searchForReserve(VIANCA.fetchReserves);
+  let chanResult = searchForReserve(CHAN.fetchReserves);
+  let topaResult = searchForReserve(TOPA.fetchReserves);
+  let ibaResult = searchForReserve(IBA_COLOMBIA.fetchReserves);
+  let mergedResults = axios.all([viancaResult, chanResult, topaResult, ibaResult]);
+  return mergedResults;
 }
