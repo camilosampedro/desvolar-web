@@ -73,6 +73,7 @@ reload(){
                     <Table.HeaderCell >Fecha</Table.HeaderCell>
                     <Table.HeaderCell >Aerolinea</Table.HeaderCell>
                     <Table.HeaderCell >Tarifa</Table.HeaderCell>
+                    <Table.HeaderCell >Reservar</Table.HeaderCell>
                   </Table.Row>
                   </Table.Header>
 
@@ -93,6 +94,7 @@ reload(){
                           <Table.Cell >{result.thumbnail ? <img src={result.thumbnail} width="50"></img>: result.name}</Table.Cell>
                           <Table.Cell ><i>COP</i> {result.price}
                           </Table.Cell>
+                          <Table.Cell><Button onClick={this.reload.bind(this)}>Reservar</Button></Table.Cell>
                       </Table.Row>)})}
             </Table.Body>
 
