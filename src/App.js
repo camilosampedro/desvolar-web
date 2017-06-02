@@ -24,6 +24,7 @@ class App extends Component {
   }
 
   render() {
+
     if (this.state.phase === MAIN_PHASE) {
       return (
           <Main onChange={this.search.bind(this)} onSeeReservations={this.reservation.bind(this)}></Main>
@@ -37,8 +38,8 @@ class App extends Component {
       // <FlightResults resutsObservable={this.state.observable}></FlightResults>
       console.log('state', this.state);
       return (
-        <FlightResults resultsObservable={this.state.observable} 
-        origin={this.state.origin} 
+        <FlightResults resultsObservable={this.state.observable}
+        origin={this.state.origin}
         destination={this.state.destination}
         departureDate={this.state.departureDate}
         arrivalDate={this.state.arrivalDate}>
@@ -50,17 +51,17 @@ class App extends Component {
   search(filters) {
     console.log('filters', filters);
     this.setState({
-      phase: RESULT_PHASE, 
-      observable: submitAllSearchs(filters), 
-      origin: filters.origin, 
+      phase: RESULT_PHASE,
+      observable: submitAllSearchs(filters),
+      origin: filters.origin,
       destination: filters.destination,
       departureDate: filters.departureDate,
       arrivalDate: filters.arrivalDate});
   }
 
-  reservation(){    
+  reservation(){
     this.setState({
-      phase: BOOK_PHASE, 
+      phase: BOOK_PHASE,
       observable: Rx.Observable.of({
         status: 200,
         data: {

@@ -5,6 +5,7 @@ import { Dropdown, Checkbox, Button, Label, Icon} from 'semantic-ui-react'
 import 'react-datepicker/dist/react-datepicker.css';
 import './Main.css';
 import logo from '../airplane.svg';
+import {auth, logout} from '../service/firebase-service'
 
 let cities=[{value:'BOG', text:'Bogotá'} ,{value:'MDE', text:'Medellín'} ]
 
@@ -19,7 +20,8 @@ class Main extends Component {
       origin: '',
       destination: '',
       passengers: 1,
-      roundTrip: false
+      roundTrip: false,
+      user: ''
     }
     this.changeDepartureDate = this.changeDepartureDate.bind(this);
     this.changeArrivalDate = this.changeArrivalDate.bind(this);
@@ -95,7 +97,43 @@ class Main extends Component {
       filters.roundTrip = false;
     }
   this.props.onChange(filters);
-  }
+}
+
+// componentWillMount(){
+
+// }
+
+handleAuth(){
+    auth().then((result) => {
+      console.log("Signed in as:", result);
+      if (result.user.email.endsWith('@udea.edu.co')) {
+            // this.handleAuthState();
+            this.setState({user: result.user.email});
+      } else {
+        alert('El correo debe ser de dominio @udea.edu.co');
+      }
+    }).catch(function (error) {
+      console.error("Authentication failed:", error);
+    });
+}
+
+// handleAuthState(){
+//   firebaseAuth().onAuthStateChanged(user => {
+//     if (user){
+//       console.log("Usuario:", user)
+//         this.setState({ user: user })
+//       }else{
+//         this.setState({ user: null })
+//       }
+//     })
+// }
+
+handleLogout(){
+    logout().then(() => {
+      this.setState({user: ''});
+      console.log("Desconectado")})
+    .catch(error => console.error('Error: ', error)) 
+}
 
  reservation() {
    this.props.onSeeReservations();
@@ -104,6 +142,15 @@ class Main extends Component {
   render() {
     return (
     <div className="App">
+      {/*<div>*/}
+        {this.state.user ? 
+          <div>
+            <Label>{this.state.user}</Label>
+            <Button  className="btn-reservas">Mis Reservas</Button>
+            <Button  className="btn-logout" onClick={this.handleLogout.bind(this)}>Cerrar Sesión</Button>            
+          </div>:
+          <Button  className="btn-signIn" onClick={this.handleAuth.bind(this)}>Iniciar Sesión</Button>}
+      {/*</div>*/}
       <div className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <h2>Desvolar.com</h2>
