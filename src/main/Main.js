@@ -129,7 +129,9 @@ handleAuth(){
 // }
 
 handleLogout(){
-    logout().then(() => console.log("Desconectado"))
+    logout().then(() => {
+      this.setState({user: ''});
+      console.log("Desconectado")})
     .catch(error => console.error('Error: ', error)) 
 }
 
