@@ -15,3 +15,9 @@ export function submitReserve(reserve, apiUrl) {
     return result.message;
   }).catch(error => console.log(error));
 }
+
+export function searchForReserve(apiUrl) {
+  let _this = this;
+  let url = apiUrl + '?token=';// + getToken();
+  return axios.get();
+}
