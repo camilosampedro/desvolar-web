@@ -18,6 +18,11 @@ body {
   padding: 20px;
 }
 
+.btn-signIn{
+  margin-left: 60em !important;
+  margin-top: 0.5em !important;
+}
+
 .App-intro {
   font-size: large;
 }

@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import Main from './main/Main'
 import FlightResults from './FlightResults'
+// import { Menu} from 'semantic-ui-react'
 import {submitAllSearchs} from './service/search-service';
 
 const MAIN_PHASE = 0;
@@ -21,6 +22,7 @@ class App extends Component {
   }
 
   render() {
+    
     if (this.state.phase === MAIN_PHASE) {
       return (
         <Main onChange={this.search.bind(this)}></Main>
