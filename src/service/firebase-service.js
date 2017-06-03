@@ -7,11 +7,13 @@ export function auth() {
   provider.setCustomParameters({hd: "udea.edu.co"});
 
   return firebaseAuth().signInWithPopup(provider).then(function(result) {
+    console.log('Result', result);
     authInfo = {
       email: result.user.email,
       name: result.user.displayName,
-      token: result.user.refreshToken,
-      uid: result.user.uid
+      refreshToken: result.user.refreshToken,
+      idToken: result.credential.idToken,
+      uid: result.user.uid,
     }
     return result;
   });
@@ -26,7 +28,7 @@ export function getAuthInfo() {
 }
 
 export function isLoggedIn() {
-  if (authInfo.token) {
+  if (authInfo.idToken) {
     return true;
   } else {
     return false;

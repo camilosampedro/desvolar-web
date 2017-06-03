@@ -20,7 +20,7 @@ export function submitReserve(reserve, apiUrl) {
 
 export function searchForReserve(apiUrl) {
   let _this = this;
-  let url = apiUrl + '?token=' + getAuthInfo().token;// + getToken();
+  let url = apiUrl + '?token=' + getAuthInfo().idToken;// + getToken();
   return axios.get(url);
 }
 
