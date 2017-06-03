@@ -1,8 +1,9 @@
-body{
+body {
   background-image: url(../airplane.jpg);
   background-repeat: no-repeat;
-  background-size: 100%;
+  background-size: 100vw 100vh;
 }
+
 .App {
   text-align: center;
 }
@@ -17,8 +18,18 @@ body{
   padding: 20px;
 }
 
+.btn-signIn{
+  margin-left: 60em !important;
+  margin-top: 0.5em !important;
+}
+
 .App-intro {
   font-size: large;
+}
+.checkContainer{
+  display: flex;
+  justify-content: center;
+  width: 100%;
 }
 .searchContent {
   position: relative;
@@ -31,20 +42,21 @@ body{
   align-items: center;
   justify-content: space-around;
   align-items: center;
-  /*background-color: rgba(245,245,220,1);*/
-  background-color: rgba(117,84,97,0.9);
-  /*background-color: #755461;*/
+  background-color: rgba(117, 84, 97, 0.9);
   -webkit-box-shadow: 6px 4px 5px 0px rgba(50, 50, 50, 0.36);
-  -moz-box-shadow:    6px 4px 5px 0px rgba(50, 50, 50, 0.36);
-  box-shadow:         6px 4px 5px 0px rgba(50, 50, 50, 0.36);
+  -moz-box-shadow: 6px 4px 5px 0px rgba(50, 50, 50, 0.36);
+  box-shadow: 6px 4px 5px 0px rgba(50, 50, 50, 0.36);
   border-radius: 5px;
   text-align: left;
   flex-wrap: wrap;
 }
-.searchContent div, .searchContent button{
+
+.searchContent div,
+.searchContent button {
   margin-top: 1vh;
   margin-bottom: 1vh;
 }
+
 .searchContent .searchField {
   position: relative;
   width: 50%;
@@ -52,48 +64,104 @@ body{
   align-items: center;
   flex-direction: column;
 }
-.searchContent .searchField input{
+
+.searchContent .searchField input {
   border-radius: 5px;
-  /*border: 1px solid #755461;*/
   text-align: center;
   height: 1.5rem;
 }
+
 label {
-  /*color: #755461;*/
   color: #fff;
   font-weight: 500;
 }
-.searchContent .searchButton{
+
+.searchContent .searchButton {
   position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
   width: 100%;
-
 }
- button {
+
+.btn .ui.button {
   position: relative;
   top: 5%;
   text-align: center;
-  background-color: #5C8A70;
-  color: #fff;
-  font-weight: bold;
+  background-color: #5C8A70 !important;
+  color: #fff !important;
+  font-weight: 800;
+  border: none;
+  width: 100%;
+  border-radius: 5px;
+  height: 2.5rem;
+  cursor: pointer;
+  /*outline: none;*/
+}
+
+.ui.button {
+  /*position: relative;
+  top: 5%;*/
+  text-align: center;
+  background-color: #5C8A70 !important;
+  color: #fff !important;
+  font-weight: 800;
   border: none;
   width: 20%;
   border-radius: 5px;
-  height: 2rem;
+  height: 2.5rem;
   cursor: pointer;
-  outline: none;
+  /*outline: none;*/
 }
+
+.checkbox {
+  width: 40%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /*color: white;*/
+}
+
+/*.ui.toggle.checkbox input:checked~.box:before, 
+.ui.toggle.checkbox input:checked~label:before{
+  background-color: rgb(135, 39, 92)!important;
+}*/
+
+.checkbox label{
+  color: white !important;
+}
+
+/*.checkbox label:last-child{
+      margin-left: 41px !important;
+}*/
+
 .searchContent button:hover {
   background-color: #80C89F;
-  /*color: #755461;*/
+}
+
+.ui.fluid.dropdown {
+  width: 54% !important;
+  height: 35px !important;
+}
+
+.ui.search.dropdown>.text {
+  bottom: 8px;
 }
 
 @keyframes App-logo-spin {
-  0% { transform: rotate(0deg); }
-  25% { transform: rotate(20deg); }
-  50% { transform: rotate(0deg); }
-  75% { transform: rotate(-20deg); }
-  100% { transform: rotate(0deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(20deg);
+  }
+  50% {
+    transform: rotate(0deg);
+  }
+  75% {
+    transform: rotate(-20deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
 }
