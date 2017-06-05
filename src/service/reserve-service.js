@@ -7,8 +7,10 @@ export const RESERVED_RESULT = 'R';
 export const INSUFICIENT_RESULT = 'I';
 export const NOT_FOUND_RESULT = 'NF';
 
-export function submitReserve(reserve, apiUrl) {
+export function submitReserve(reserve, airlineCode) {
   let _this = this;
+  let apiUrl = getAirlineUrl(airlineCode);
+  reserve.token = getAuthInfo().idToken;
   return axios.post(apiUrl, reserve).then(result => {
     if (!result.message) {
       console.error("No \"message\" attribute in result: ", result)
@@ -18,9 +20,24 @@ export function submitReserve(reserve, apiUrl) {
   }).catch(error => console.log(error));
 }
 
+function getAirlineUrl(airlineCode) {
+  switch (airlineCode) {
+    case VIANCA.code:
+      return VIANCA.submitReserveUrl;
+    case CHAN.code:
+      return CHAN.submitReserveUrl;
+    case TOPA.code:
+      return TOPA.submitReserveUrl;
+    case IBA_COLOMBIA.code:
+      return IBA_COLOMBIA.submitReserveUrl;
+    default:
+
+  }
+}
+
 export function searchForReserve(apiUrl) {
   let _this = this;
-  let url = apiUrl + '?token=' + getAuthInfo().idToken;// + getToken();
+  let url = apiUrl + '?token=' + getAuthInfo().idToken; // + getToken();
   return axios.get(url);
 }
 
